@@ -17,15 +17,17 @@ namespace Assignment_Example_HU.Tests.Controllers
     {
         private readonly Mock<IRefundService> _refundServiceMock;
         private readonly RefundsController _controller;
+        private readonly Guid _userId;
 
         public RefundsControllerTests()
         {
             _refundServiceMock = new Mock<IRefundService>();
             _controller = new RefundsController(_refundServiceMock.Object);
 
+            _userId = Guid.NewGuid();
             var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString())
+                new Claim(ClaimTypes.NameIdentifier, _userId.ToString())
             }, "mock"));
 
             _controller.ControllerContext = new ControllerContext()
@@ -38,9 +40,9 @@ namespace Assignment_Example_HU.Tests.Controllers
         public async Task RequestRefund_ReturnsOk()
         {
             // Arrange
-            var dto = new RequestRefundDto { SlotId = Guid.NewGuid() };
-            var refund = new RefundDto { Id = Guid.NewGuid() };
-            _refundServiceMock.Setup(s => s.RequestRefundAsync(It.IsAny<Guid>(), dto)).ReturnsAsync(refund);
+            var dto = new RequestRefundDto { SlotId = Guid.NewGuid(), Reason = "Test" };
+            var refund = new RefundDto { Id = Guid.NewGuid(), RefundAmount = 50 };
+            _refundServiceMock.Setup(s => s.RequestRefundAsync(_userId, dto)).ReturnsAsync(refund);
 
             // Act
             var result = await _controller.RequestRefund(dto);
@@ -55,7 +57,7 @@ namespace Assignment_Example_HU.Tests.Controllers
         {
             // Arrange
             var refunds = new List<RefundDto> { new RefundDto { Id = Guid.NewGuid() } };
-            _refundServiceMock.Setup(s => s.GetUserRefundsAsync(It.IsAny<Guid>())).ReturnsAsync(refunds);
+            _refundServiceMock.Setup(s => s.GetUserRefundsAsync(_userId)).ReturnsAsync(refunds);
 
             // Act
             var result = await _controller.GetUserRefunds();

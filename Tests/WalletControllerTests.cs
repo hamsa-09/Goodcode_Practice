@@ -17,15 +17,17 @@ namespace Assignment_Example_HU.Tests.Controllers
     {
         private readonly Mock<IWalletService> _walletServiceMock;
         private readonly WalletController _controller;
+        private readonly Guid _userId;
 
         public WalletControllerTests()
         {
             _walletServiceMock = new Mock<IWalletService>();
             _controller = new WalletController(_walletServiceMock.Object);
 
+            _userId = Guid.NewGuid();
             var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString())
+                new Claim(ClaimTypes.NameIdentifier, _userId.ToString())
             }, "mock"));
 
             _controller.ControllerContext = new ControllerContext()
@@ -39,7 +41,7 @@ namespace Assignment_Example_HU.Tests.Controllers
         {
             // Arrange
             var wallet = new WalletDto { Balance = 100 };
-            _walletServiceMock.Setup(s => s.GetWalletAsync(It.IsAny<Guid>())).ReturnsAsync(wallet);
+            _walletServiceMock.Setup(s => s.GetWalletAsync(_userId)).ReturnsAsync(wallet);
 
             // Act
             var result = await _controller.GetWallet();
@@ -53,9 +55,9 @@ namespace Assignment_Example_HU.Tests.Controllers
         public async Task AddFunds_ReturnsOk()
         {
             // Arrange
-            var dto = new AddFundsDto { Amount = 50 };
+            var dto = new AddFundsDto { Amount = 50, Description = "Test" };
             var transaction = new TransactionDto { Amount = 50 };
-            _walletServiceMock.Setup(s => s.AddFundsAsync(It.IsAny<Guid>(), dto)).ReturnsAsync(transaction);
+            _walletServiceMock.Setup(s => s.AddFundsAsync(_userId, dto)).ReturnsAsync(transaction);
 
             // Act
             var result = await _controller.AddFunds(dto);
@@ -63,6 +65,21 @@ namespace Assignment_Example_HU.Tests.Controllers
             // Assert
             var okResult = result.Result.Should().BeOfType<OkObjectResult>().Subject;
             okResult.Value.Should().BeEquivalentTo(transaction);
+        }
+
+        [Fact]
+        public async Task GetTransactionHistory_ReturnsOk()
+        {
+            // Arrange
+            var transactions = new List<TransactionDto> { new TransactionDto { Id = Guid.NewGuid() } };
+            _walletServiceMock.Setup(s => s.GetTransactionHistoryAsync(_userId)).ReturnsAsync(transactions);
+
+            // Act
+            var result = await _controller.GetTransactionHistory();
+
+            // Assert
+            var okResult = result.Result.Should().BeOfType<OkObjectResult>().Subject;
+            okResult.Value.Should().BeEquivalentTo(transactions);
         }
     }
 }

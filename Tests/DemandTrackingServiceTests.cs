@@ -1,11 +1,12 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Moq;
 using Xunit;
 using FluentAssertions;
 using Assignment_Example_HU.Services;
+using System.Text;
+using System.Threading;
 
 namespace Assignment_Example_HU.Tests.Services
 {
@@ -21,27 +22,73 @@ namespace Assignment_Example_HU.Tests.Services
         }
 
         [Fact]
-        public async Task IncrementViewerCountAsync_CallsSetString()
+        public async Task GetViewerCountAsync_ReturnsZero_WhenCacheEmpty()
         {
             // Arrange
             var slotId = Guid.NewGuid();
-            var key = $"slot_viewers:{slotId}";
-            _cacheMock.Setup(c => c.GetAsync(key, It.IsAny<CancellationToken>())).ReturnsAsync((byte[])null);
+            _cacheMock.Setup(c => c.GetAsync(It.IsAny<string>(), default)).ReturnsAsync((byte[])null);
+
+            // Act
+            var result = await _service.GetViewerCountAsync(slotId);
+
+            // Assert
+            result.Should().Be(0);
+        }
+
+        [Fact]
+        public async Task GetViewerCountAsync_ReturnsValue_WhenCacheExists()
+        {
+            // Arrange
+            var slotId = Guid.NewGuid();
+            var count = 5;
+            _cacheMock.Setup(c => c.GetAsync(It.IsAny<string>(), default)).ReturnsAsync(Encoding.UTF8.GetBytes(count.ToString()));
+
+            // Act
+            var result = await _service.GetViewerCountAsync(slotId);
+
+            // Assert
+            result.Should().Be(count);
+        }
+
+        [Fact]
+        public async Task IncrementViewerCountAsync_IncrementsValue()
+        {
+            // Arrange
+            var slotId = Guid.NewGuid();
+            // Start with 2
+            _cacheMock.Setup(c => c.GetAsync(It.IsAny<string>(), default)).ReturnsAsync(Encoding.UTF8.GetBytes("2"));
 
             // Act
             await _service.IncrementViewerCountAsync(slotId);
 
             // Assert
-            _cacheMock.Verify(c => c.SetAsync(key, It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Once);
+            // Should set to "3"
+            _cacheMock.Verify(c => c.SetAsync(
+                It.Is<string>(s => s.Contains(slotId.ToString())),
+                It.Is<byte[]>(b => Encoding.UTF8.GetString(b) == "3"),
+                It.IsAny<DistributedCacheEntryOptions>(),
+                default), Times.Once);
         }
 
         [Fact]
-        public async Task GetViewerCountAsync_ReturnsZero_WhenCacheEmpty()
+        public async Task ResetViewerCountAsync_RemovesKey()
         {
             // Arrange
             var slotId = Guid.NewGuid();
-            var key = $"slot_viewers:{slotId}";
-            _cacheMock.Setup(c => c.GetAsync(key, It.IsAny<CancellationToken>())).ReturnsAsync((byte[])null);
+
+            // Act
+            await _service.ResetViewerCountAsync(slotId);
+
+            // Assert
+            _cacheMock.Verify(c => c.RemoveAsync(It.Is<string>(s => s.Contains(slotId.ToString())), default), Times.Once);
+        }
+
+        [Fact]
+        public async Task GetViewerCountAsync_ReturnsZero_WhenCacheInvalid()
+        {
+            // Arrange
+            var slotId = Guid.NewGuid();
+            _cacheMock.Setup(c => c.GetAsync(It.IsAny<string>(), default)).ReturnsAsync(Encoding.UTF8.GetBytes("invalid"));
 
             // Act
             var result = await _service.GetViewerCountAsync(slotId);

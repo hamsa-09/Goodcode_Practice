@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Moq;
 using Xunit;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Assignment_Example_HU.Data;
 using Assignment_Example_HU.DTOs;
 using Assignment_Example_HU.Enums;
@@ -52,34 +51,103 @@ namespace Assignment_Example_HU.Tests.Services
         }
 
         [Fact]
-        public async Task ProcessPaymentAsync_ReturnsExistingTransaction_WhenAlreadyCompleted()
+        public async Task ProcessPaymentAsync_ThrowsException_WhenSlotNotFound()
         {
             // Arrange
             var userId = Guid.NewGuid();
-            var dto = new PaymentDto { ReferenceId = "ref123", SlotId = Guid.NewGuid() };
-            var existingTx = new Transaction { Id = Guid.NewGuid(), Status = TransactionStatus.Completed, Amount = 100 };
-            _transactionRepositoryMock.Setup(r => r.GetByReferenceIdAsync("ref123")).ReturnsAsync(existingTx);
+            var slotId = Guid.NewGuid();
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync((Slot)null);
 
             // Act
-            var result = await _service.ProcessPaymentAsync(userId, dto);
+            Func<Task> act = () => _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId });
 
             // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Slot not found.");
+        }
+
+        [Fact]
+        public async Task ProcessPaymentAsync_ThrowsException_WhenSlotNotLockedByUser()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var slot = new Slot { Id = slotId, Status = SlotStatus.Available, BookedByUserId = Guid.NewGuid() };
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
+
+            // Act
+            Func<Task> act = () => _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId });
+
+            // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Slot must be locked by you before payment.");
+        }
+
+        [Fact]
+        public async Task ProcessPaymentAsync_ThrowsException_WhenSlotLockedByDifferentUser()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var slot = new Slot { Id = slotId, Status = SlotStatus.Locked, BookedByUserId = Guid.NewGuid() }; // Different user
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
+
+            // Act
+            Func<Task> act = () => _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId });
+
+            // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Slot must be locked by you before payment.");
+        }
+
+        [Fact]
+        public async Task ProcessPaymentAsync_ReturnsExisting_WhenIdempotentAndCompleted()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var referenceId = "ref-abc";
+            var existingTx = new Transaction
+            {
+                Id = Guid.NewGuid(),
+                Status = TransactionStatus.Completed,
+                Amount = 100,
+                RelatedSlotId = slotId,
+                BalanceAfter = 400
+            };
+            _transactionRepositoryMock.Setup(r => r.GetByReferenceIdAsync(referenceId)).ReturnsAsync(existingTx);
+
+            // Act
+            var result = await _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId, ReferenceId = referenceId });
+
+            // Assert
+            result.Should().NotBeNull();
             result.TransactionId.Should().Be(existingTx.Id);
+            result.Amount.Should().Be(100);
             _slotRepositoryMock.Verify(r => r.GetByIdAsync(It.IsAny<Guid>()), Times.Never);
         }
 
         [Fact]
-        public async Task ProcessPaymentAsync_ThrowsException_WhenSlotNotFound()
+        public async Task ProcessPaymentAsync_CreatesWallet_WhenWalletNotFound()
         {
             // Arrange
-            _slotRepositoryMock.Setup(r => r.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync((Slot)null);
-            var dto = new PaymentDto { SlotId = Guid.NewGuid() };
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var walletId = Guid.NewGuid();
+            var slot = new Slot { Id = slotId, Status = SlotStatus.Locked, BookedByUserId = userId, Price = 50 };
+            var wallet = new Wallet { Id = walletId, UserId = userId, Balance = 200 };
+
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
+            _walletRepositoryMock.SetupSequence(r => r.GetByUserIdAsync(userId))
+                .ReturnsAsync((Wallet)null)   // First call: no wallet
+                .ReturnsAsync(wallet);         // Second call: wallet after creation
+            _dbContext.Wallets.Add(wallet);
+            await _dbContext.SaveChangesAsync();
+
+            _mapperMock.Setup(m => m.Map<PaymentResponseDto>(It.IsAny<Transaction>())).Returns(new PaymentResponseDto());
 
             // Act
-            Func<Task> act = () => _service.ProcessPaymentAsync(Guid.NewGuid(), dto);
+            var result = await _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId });
 
             // Assert
-            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Slot not found.");
+            _walletServiceMock.Verify(s => s.CreateWalletAsync(userId), Times.Once);
         }
 
         [Fact]
@@ -88,53 +156,49 @@ namespace Assignment_Example_HU.Tests.Services
             // Arrange
             var userId = Guid.NewGuid();
             var slotId = Guid.NewGuid();
+            var walletId = Guid.NewGuid();
             var slot = new Slot { Id = slotId, Status = SlotStatus.Locked, BookedByUserId = userId, Price = 500 };
-            var wallet = new Wallet { Id = Guid.NewGuid(), UserId = userId, Balance = 100 };
+            var wallet = new Wallet { Id = walletId, UserId = userId, Balance = 100 }; // Not enough
 
             _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
             _walletRepositoryMock.Setup(r => r.GetByUserIdAsync(userId)).ReturnsAsync(wallet);
-
-            // Seed In-Memory DB for the wallet lock check
             _dbContext.Wallets.Add(wallet);
             await _dbContext.SaveChangesAsync();
 
-            var dto = new PaymentDto { SlotId = slotId };
-
             // Act
-            Func<Task> act = () => _service.ProcessPaymentAsync(userId, dto);
+            Func<Task> act = () => _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId });
 
             // Assert
             await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("*Insufficient balance*");
         }
 
         [Fact]
-        public async Task ProcessPaymentAsync_Succeeds_WhenBalanceIsCorrect()
+        public async Task ProcessPaymentAsync_Succeeds_WhenSufficientBalance()
         {
             // Arrange
             var userId = Guid.NewGuid();
             var slotId = Guid.NewGuid();
             var walletId = Guid.NewGuid();
             var slot = new Slot { Id = slotId, Status = SlotStatus.Locked, BookedByUserId = userId, Price = 100 };
-            var wallet = new Wallet { Id = walletId, UserId = userId, Balance = 200 };
+            var wallet = new Wallet { Id = walletId, UserId = userId, Balance = 500 };
 
             _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
             _walletRepositoryMock.Setup(r => r.GetByUserIdAsync(userId)).ReturnsAsync(wallet);
-
             _dbContext.Wallets.Add(wallet);
             await _dbContext.SaveChangesAsync();
 
-            var dto = new PaymentDto { SlotId = slotId };
-            _mapperMock.Setup(m => m.Map<PaymentResponseDto>(It.IsAny<Transaction>()))
-                .Returns(new PaymentResponseDto { Amount = 100 });
+            _mapperMock.Setup(m => m.Map<PaymentResponseDto>(It.IsAny<Transaction>())).Returns(new PaymentResponseDto { Amount = 100 });
 
             // Act
-            var result = await _service.ProcessPaymentAsync(userId, dto);
+            var result = await _service.ProcessPaymentAsync(userId, new PaymentDto { SlotId = slotId });
 
             // Assert
             result.Should().NotBeNull();
+            result.Amount.Should().Be(100);
             slot.Status.Should().Be(SlotStatus.Booked);
-            var updatedWallet = await _dbContext.Wallets.FindAsync(walletId);
-            updatedWallet.Balance.Should().Be(100);
+            _transactionRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Transaction>()), Times.Once);
+            _walletRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Wallet>()), Times.Once);
+            _slotRepositoryMock.Verify(r => r.UpdateAsync(slot), Times.Once);
         }
     }
 }

@@ -16,15 +16,17 @@ namespace Assignment_Example_HU.Tests.Controllers
     {
         private readonly Mock<IPaymentService> _paymentServiceMock;
         private readonly PaymentsController _controller;
+        private readonly Guid _userId;
 
         public PaymentsControllerTests()
         {
             _paymentServiceMock = new Mock<IPaymentService>();
             _controller = new PaymentsController(_paymentServiceMock.Object);
 
+            _userId = Guid.NewGuid();
             var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString())
+                new Claim(ClaimTypes.NameIdentifier, _userId.ToString())
             }, "mock"));
 
             _controller.ControllerContext = new ControllerContext()
@@ -38,8 +40,8 @@ namespace Assignment_Example_HU.Tests.Controllers
         {
             // Arrange
             var dto = new PaymentDto { SlotId = Guid.NewGuid() };
-            var response = new PaymentResponseDto { TransactionId = Guid.NewGuid() };
-            _paymentServiceMock.Setup(s => s.ProcessPaymentAsync(It.IsAny<Guid>(), dto)).ReturnsAsync(response);
+            var response = new PaymentResponseDto { Amount = 100 };
+            _paymentServiceMock.Setup(s => s.ProcessPaymentAsync(_userId, dto)).ReturnsAsync(response);
 
             // Act
             var result = await _controller.ProcessPayment(dto);

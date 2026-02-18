@@ -129,21 +129,64 @@ namespace Assignment_Example_HU.Tests.Services
         }
 
         [Fact]
-        public async Task LoginAsync_ReturnsResponse_WhenSuccessful()
+        public async Task LoginAsync_ThrowsUnauthorized_WhenUserNotFound()
         {
             // Arrange
-            var dto = new LoginRequestDto { Email = "user@test.com", Password = "Correct123!" };
-            var user = new User { Email = "user@test.com" };
-            _userManagerMock.Setup(m => m.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync(user);
-            _userManagerMock.Setup(m => m.CheckPasswordAsync(user, dto.Password)).ReturnsAsync(true);
+            var dto = new LoginRequestDto { Email = "notfound@test.com", Password = "any" };
+            _userManagerMock.Setup(m => m.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync((User?)null);
+
+            // Act
+            Func<Task> act = () => _service.LoginAsync(dto);
+
+            // Assert
+            await act.Should().ThrowAsync<UnauthorizedAccessException>().WithMessage("Invalid credentials.");
+        }
+
+        [Fact]
+        public async Task LoginAsync_CreatesAdmin_WhenHardcodedAdminUsedAndNotExists()
+        {
+            // Arrange
+            var dto = new LoginRequestDto { Email = "admin@sport.com", Password = "Admin@123" };
+            _userManagerMock.Setup(m => m.FindByEmailAsync("admin@sport.com")).ReturnsAsync((User?)null); // Admin doesnt exist
+            _userManagerMock.Setup(m => m.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
             _tokenServiceMock.Setup(s => s.GenerateAccessToken(It.IsAny<User>()))
-                .Returns(("valid-token", DateTime.UtcNow.AddHours(1)));
+                .Returns(("admin-token", DateTime.UtcNow.AddHours(1)));
 
             // Act
             var result = await _service.LoginAsync(dto);
 
             // Assert
-            result.AccessToken.Should().Be("valid-token");
+            result.AccessToken.Should().Be("admin-token");
+            _userManagerMock.Verify(m => m.CreateAsync(It.IsAny<User>(), "Admin@123"), Times.Once);
+        }
+
+        [Fact]
+        public async Task RegisterAsync_SetsUserNameToEmail_WhenUserNameIsEmpty()
+        {
+            // Arrange
+            var dto = new RegisterRequestDto
+            {
+                Email = "new@test.com",
+                UserName = "   ", // Empty after trim
+                Password = "Password123",
+                Role = Role.User
+            };
+
+            User? createdUser = null;
+            _userManagerMock.Setup(m => m.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync((User?)null);
+            _userManagerMock.Setup(m => m.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
+                .Callback<User, string>((u, p) => createdUser = u)
+                .ReturnsAsync(IdentityResult.Success);
+            _tokenServiceMock.Setup(s => s.GenerateAccessToken(It.IsAny<User>()))
+                .Returns(("fake-token", DateTime.UtcNow.AddHours(1)));
+
+            // Act
+            await _service.RegisterAsync(dto);
+
+            // Assert
+            createdUser.Should().NotBeNull();
+            createdUser.UserName.Should().Be("new@test.com");
         }
     }
 }

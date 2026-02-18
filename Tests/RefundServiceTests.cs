@@ -68,6 +68,51 @@ namespace Assignment_Example_HU.Tests.Services
         }
 
         [Fact]
+        public async Task CalculateRefundAmountAsync_ReturnsFullRefund_WhenReasonContainsUnavailable()
+        {
+            // Arrange
+            var startTime = DateTime.UtcNow.AddHours(2); // Would normally be 0% refund
+            var originalAmount = 100m;
+
+            // Act
+            var result = await _service.CalculateRefundAmountAsync(startTime, originalAmount, "Venue unavailable");
+
+            // Assert
+            result.Should().Be(100m); // Full refund due to unavailability
+        }
+
+        [Fact]
+        public async Task RequestRefundAsync_ThrowsException_WhenSlotNotFound()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync((Slot)null);
+
+            // Act
+            Func<Task> act = () => _service.RequestRefundAsync(userId, new RequestRefundDto { SlotId = slotId });
+
+            // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Slot not found.");
+        }
+
+        [Fact]
+        public async Task RequestRefundAsync_ThrowsUnauthorized_WhenNotOwner()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var slot = new Slot { Id = slotId, Status = SlotStatus.Booked, BookedByUserId = Guid.NewGuid() }; // Different user
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
+
+            // Act
+            Func<Task> act = () => _service.RequestRefundAsync(userId, new RequestRefundDto { SlotId = slotId });
+
+            // Assert
+            await act.Should().ThrowAsync<UnauthorizedAccessException>();
+        }
+
+        [Fact]
         public async Task RequestRefundAsync_ThrowsException_WhenSlotNotBooked()
         {
             // Arrange
@@ -81,6 +126,47 @@ namespace Assignment_Example_HU.Tests.Services
 
             // Assert
             await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Slot must be booked to request a refund.");
+        }
+
+        [Fact]
+        public async Task RequestRefundAsync_ThrowsException_WhenNoPaymentTransaction()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var slot = new Slot { Id = slotId, Status = SlotStatus.Booked, BookedByUserId = userId };
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
+            _transactionRepositoryMock.Setup(r => r.GetByUserIdAsync(userId)).ReturnsAsync(new List<Transaction>()); // No transactions
+
+            // Act
+            Func<Task> act = () => _service.RequestRefundAsync(userId, new RequestRefundDto { SlotId = slotId });
+
+            // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Payment transaction not found for this slot.");
+        }
+
+        [Fact]
+        public async Task RequestRefundAsync_ReturnsExisting_WhenRefundAlreadyExists()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var slotId = Guid.NewGuid();
+            var transactionId = Guid.NewGuid();
+            var slot = new Slot { Id = slotId, Status = SlotStatus.Booked, BookedByUserId = userId, StartTime = DateTime.UtcNow.AddHours(25) };
+            var transaction = new Transaction { Id = transactionId, RelatedSlotId = slotId, Type = TransactionType.Debit, Status = TransactionStatus.Completed, Amount = 100 };
+            var existingRefund = new Refund { Id = Guid.NewGuid() };
+
+            _slotRepositoryMock.Setup(r => r.GetByIdAsync(slotId)).ReturnsAsync(slot);
+            _transactionRepositoryMock.Setup(r => r.GetByUserIdAsync(userId)).ReturnsAsync(new List<Transaction> { transaction });
+            _refundRepositoryMock.Setup(r => r.GetByReferenceIdAsync(transactionId.ToString())).ReturnsAsync(existingRefund);
+            _mapperMock.Setup(m => m.Map<RefundDto>(existingRefund)).Returns(new RefundDto());
+
+            // Act
+            var result = await _service.RequestRefundAsync(userId, new RequestRefundDto { SlotId = slotId });
+
+            // Assert
+            result.Should().NotBeNull();
+            _refundRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Refund>()), Times.Never);
         }
 
         [Fact]
@@ -140,6 +226,74 @@ namespace Assignment_Example_HU.Tests.Services
             // Assert
             refund.Status.Should().Be(RefundStatus.Completed);
             _walletRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Wallet>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task ProcessPendingRefundsAsync_FailsRefund_WhenTransactionNotFound()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var refund = new Refund
+            {
+                Id = Guid.NewGuid(),
+                UserId = userId,
+                TransactionId = Guid.NewGuid(),
+                SlotId = Guid.NewGuid(),
+                RefundAmount = 100,
+                Status = RefundStatus.Pending
+            };
+
+            _refundRepositoryMock.Setup(r => r.GetPendingRefundsAsync()).ReturnsAsync(new List<Refund> { refund });
+            _transactionRepositoryMock.Setup(r => r.GetByIdAsync(refund.TransactionId)).ReturnsAsync((Transaction)null);
+
+            // Act
+            await _service.ProcessPendingRefundsAsync();
+
+            // Assert
+            refund.Status.Should().Be(RefundStatus.Failed);
+        }
+
+        [Fact]
+        public async Task ProcessPendingRefundsAsync_FailsRefund_WhenWalletNotFound()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var refund = new Refund
+            {
+                Id = Guid.NewGuid(),
+                UserId = userId,
+                TransactionId = Guid.NewGuid(),
+                SlotId = Guid.NewGuid(),
+                RefundAmount = 100,
+                Status = RefundStatus.Pending
+            };
+            var transaction = new Transaction { Id = refund.TransactionId, Status = TransactionStatus.Completed };
+
+            _refundRepositoryMock.Setup(r => r.GetPendingRefundsAsync()).ReturnsAsync(new List<Refund> { refund });
+            _transactionRepositoryMock.Setup(r => r.GetByIdAsync(refund.TransactionId)).ReturnsAsync(transaction);
+            _walletRepositoryMock.Setup(r => r.GetByUserIdAsync(userId)).ReturnsAsync((Wallet)null);
+
+            // Act
+            await _service.ProcessPendingRefundsAsync();
+
+            // Assert
+            refund.Status.Should().Be(RefundStatus.Failed);
+        }
+
+        [Fact]
+        public async Task GetUserRefundsAsync_ReturnsMappedList()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var refunds = new List<Refund> { new Refund(), new Refund() };
+            _refundRepositoryMock.Setup(r => r.GetByUserIdAsync(userId)).ReturnsAsync(refunds);
+            _mapperMock.Setup(m => m.Map<IEnumerable<RefundDto>>(refunds)).Returns(new List<RefundDto> { new RefundDto(), new RefundDto() });
+
+            // Act
+            var result = await _service.GetUserRefundsAsync(userId);
+
+            // Assert
+            result.Should().HaveCount(2);
         }
     }
 }

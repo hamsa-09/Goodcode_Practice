@@ -64,7 +64,27 @@ namespace Assignment_Example_HU.Tests.Services
         }
 
         [Fact]
-        public async Task CreateDiscountAsync_ThrowsUnauthorized_WhenNotOwner()
+        public async Task CreateDiscountAsync_Succeeds_ForCourt()
+        {
+            // Arrange
+            var courtId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var dto = new CreateDiscountDto { Scope = DiscountScope.Court, CourtId = courtId, PercentOff = 15 };
+
+            _courtServiceMock.Setup(s => s.IsCourtOwnerAsync(courtId, userId)).ReturnsAsync(true);
+            _mapperMock.Setup(m => m.Map<Discount>(dto)).Returns(new Discount());
+            _mapperMock.Setup(m => m.Map<DiscountDto>(It.IsAny<Discount>())).Returns(new DiscountDto());
+
+            // Act
+            var result = await _service.CreateDiscountAsync(dto, userId);
+
+            // Assert
+            result.Should().NotBeNull();
+            _discountRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Discount>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task CreateDiscountAsync_ThrowsUnauthorized_WhenNotVenueOwner()
         {
             // Arrange
             var venueId = Guid.NewGuid();
@@ -78,6 +98,230 @@ namespace Assignment_Example_HU.Tests.Services
 
             // Assert
             await act.Should().ThrowAsync<UnauthorizedAccessException>();
+        }
+
+        [Fact]
+        public async Task CreateDiscountAsync_ThrowsUnauthorized_WhenNotCourtOwner()
+        {
+            // Arrange
+            var courtId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var dto = new CreateDiscountDto { Scope = DiscountScope.Court, CourtId = courtId, PercentOff = 10 };
+
+            _courtServiceMock.Setup(s => s.IsCourtOwnerAsync(courtId, userId)).ReturnsAsync(false);
+
+            // Act
+            Func<Task> act = () => _service.CreateDiscountAsync(dto, userId);
+
+            // Assert
+            await act.Should().ThrowAsync<UnauthorizedAccessException>();
+        }
+
+        [Fact]
+        public async Task GetDiscountByIdAsync_ReturnsNull_WhenNotFound()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync((Discount)null);
+
+            // Act
+            var result = await _service.GetDiscountByIdAsync(discountId);
+
+            // Assert
+            result.Should().BeNull();
+        }
+
+        [Fact]
+        public async Task GetDiscountByIdAsync_ReturnsMappedDiscount()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId };
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _mapperMock.Setup(m => m.Map<DiscountDto>(discount)).Returns(new DiscountDto { Id = discountId });
+
+            // Act
+            var result = await _service.GetDiscountByIdAsync(discountId);
+
+            // Assert
+            result.Should().NotBeNull();
+            result!.Id.Should().Be(discountId);
+        }
+
+        [Fact]
+        public async Task GetDiscountsByVenueIdAsync_ReturnsMappedList()
+        {
+            // Arrange
+            var venueId = Guid.NewGuid();
+            var discounts = new List<Discount> { new Discount(), new Discount() };
+            _discountRepositoryMock.Setup(r => r.GetByVenueIdAsync(venueId)).ReturnsAsync(discounts);
+            _mapperMock.Setup(m => m.Map<IEnumerable<DiscountDto>>(discounts)).Returns(new List<DiscountDto> { new DiscountDto(), new DiscountDto() });
+
+            // Act
+            var result = await _service.GetDiscountsByVenueIdAsync(venueId);
+
+            // Assert
+            result.Should().HaveCount(2);
+        }
+
+        [Fact]
+        public async Task GetDiscountsByCourtIdAsync_ReturnsMappedList()
+        {
+            // Arrange
+            var courtId = Guid.NewGuid();
+            var discounts = new List<Discount> { new Discount() };
+            _discountRepositoryMock.Setup(r => r.GetByCourtIdAsync(courtId)).ReturnsAsync(discounts);
+            _mapperMock.Setup(m => m.Map<IEnumerable<DiscountDto>>(discounts)).Returns(new List<DiscountDto> { new DiscountDto() });
+
+            // Act
+            var result = await _service.GetDiscountsByCourtIdAsync(courtId);
+
+            // Assert
+            result.Should().HaveCount(1);
+        }
+
+        [Fact]
+        public async Task UpdateDiscountAsync_ThrowsException_WhenNotFound()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync((Discount)null);
+
+            // Act
+            Func<Task> act = () => _service.UpdateDiscountAsync(discountId, new UpdateDiscountDto(), Guid.NewGuid());
+
+            // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Discount not found.");
+        }
+
+        [Fact]
+        public async Task UpdateDiscountAsync_ThrowsUnauthorized_WhenNotVenueOwner()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var venueId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId, VenueId = venueId };
+
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _venueServiceMock.Setup(s => s.IsVenueOwnerAsync(venueId, userId)).ReturnsAsync(false);
+
+            // Act
+            Func<Task> act = () => _service.UpdateDiscountAsync(discountId, new UpdateDiscountDto(), userId);
+
+            // Assert
+            await act.Should().ThrowAsync<UnauthorizedAccessException>();
+        }
+
+        [Fact]
+        public async Task UpdateDiscountAsync_ThrowsUnauthorized_WhenNotCourtOwner()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var courtId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId, CourtId = courtId };
+
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _courtServiceMock.Setup(s => s.IsCourtOwnerAsync(courtId, userId)).ReturnsAsync(false);
+
+            // Act
+            Func<Task> act = () => _service.UpdateDiscountAsync(discountId, new UpdateDiscountDto(), userId);
+
+            // Assert
+            await act.Should().ThrowAsync<UnauthorizedAccessException>();
+        }
+
+        [Fact]
+        public async Task UpdateDiscountAsync_Succeeds_WhenVenueOwner()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var venueId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId, VenueId = venueId };
+
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _venueServiceMock.Setup(s => s.IsVenueOwnerAsync(venueId, userId)).ReturnsAsync(true);
+            _mapperMock.Setup(m => m.Map<DiscountDto>(discount)).Returns(new DiscountDto { Id = discountId });
+
+            // Act
+            var result = await _service.UpdateDiscountAsync(discountId, new UpdateDiscountDto(), userId);
+
+            // Assert
+            result.Should().NotBeNull();
+            _discountRepositoryMock.Verify(r => r.UpdateAsync(discount), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteDiscountAsync_ThrowsException_WhenNotFound()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync((Discount)null);
+
+            // Act
+            Func<Task> act = () => _service.DeleteDiscountAsync(discountId, Guid.NewGuid());
+
+            // Assert
+            await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Discount not found.");
+        }
+
+        [Fact]
+        public async Task DeleteDiscountAsync_ThrowsUnauthorized_WhenNotVenueOwner()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var venueId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId, VenueId = venueId };
+
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _venueServiceMock.Setup(s => s.IsVenueOwnerAsync(venueId, userId)).ReturnsAsync(false);
+
+            // Act
+            Func<Task> act = () => _service.DeleteDiscountAsync(discountId, userId);
+
+            // Assert
+            await act.Should().ThrowAsync<UnauthorizedAccessException>();
+        }
+
+        [Fact]
+        public async Task DeleteDiscountAsync_Succeeds_WhenVenueOwner()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var venueId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId, VenueId = venueId };
+
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _venueServiceMock.Setup(s => s.IsVenueOwnerAsync(venueId, userId)).ReturnsAsync(true);
+
+            // Act
+            var result = await _service.DeleteDiscountAsync(discountId, userId);
+
+            // Assert
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public async Task DeleteDiscountAsync_Succeeds_WhenCourtOwner()
+        {
+            // Arrange
+            var discountId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
+            var courtId = Guid.NewGuid();
+            var discount = new Discount { Id = discountId, CourtId = courtId };
+
+            _discountRepositoryMock.Setup(r => r.GetByIdAsync(discountId)).ReturnsAsync(discount);
+            _courtServiceMock.Setup(s => s.IsCourtOwnerAsync(courtId, userId)).ReturnsAsync(true);
+
+            // Act
+            var result = await _service.DeleteDiscountAsync(discountId, userId);
+
+            // Assert
+            result.Should().BeTrue();
         }
     }
 }

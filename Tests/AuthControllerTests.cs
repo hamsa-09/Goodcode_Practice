@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -25,7 +26,7 @@ namespace Assignment_Example_HU.Tests.Controllers
         {
             // Arrange
             var dto = new RegisterRequestDto { Email = "test@test.com" };
-            var response = new AuthResponseDto { AccessToken = "token" };
+            var response = new AuthResponseDto { AccessToken = "fake-token" };
             _authServiceMock.Setup(s => s.RegisterAsync(dto)).ReturnsAsync(response);
 
             // Act
@@ -40,8 +41,8 @@ namespace Assignment_Example_HU.Tests.Controllers
         public async Task Login_ReturnsOk()
         {
             // Arrange
-            var dto = new LoginRequestDto { Email = "test@test.com" };
-            var response = new AuthResponseDto { AccessToken = "token" };
+            var dto = new LoginRequestDto { Email = "admin@test.com" };
+            var response = new AuthResponseDto { AccessToken = "admin-token" };
             _authServiceMock.Setup(s => s.LoginAsync(dto)).ReturnsAsync(response);
 
             // Act
