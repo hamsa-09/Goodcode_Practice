@@ -50,7 +50,8 @@ namespace Assignment_Example_HU.Services
             await _venueRepository.AddAsync(venue);
             await _venueRepository.SaveChangesAsync();
 
-            return _mapper.Map<VenueDto>(venue);
+            var venueWithOwner = await _venueRepository.GetByIdWithOwnerAsync(venue.Id);
+            return _mapper.Map<VenueDto>(venueWithOwner!);
         }
 
         public async Task<VenueDto?> GetVenueByIdAsync(Guid id)

@@ -4112,20 +4112,20 @@ FN:21,Assignment_Example_HU.Enums.DiscountScope Assignment_Example_HU.DTOs.Creat
 FNDA:10,Assignment_Example_HU.Enums.DiscountScope Assignment_Example_HU.DTOs.CreateDiscountDto::get_Scope()
 DA:22,10
 FN:22,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_VenueId()
-FNDA:8,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_VenueId()
-DA:23,8
+FNDA:11,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_VenueId()
+DA:23,11
 FN:23,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_CourtId()
-FNDA:7,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_CourtId()
-DA:24,7
+FNDA:9,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_CourtId()
+DA:24,9
 FN:24,System.Decimal Assignment_Example_HU.DTOs.CreateDiscountDto::get_PercentOff()
-FNDA:7,System.Decimal Assignment_Example_HU.DTOs.CreateDiscountDto::get_PercentOff()
-DA:25,7
+FNDA:9,System.Decimal Assignment_Example_HU.DTOs.CreateDiscountDto::get_PercentOff()
+DA:25,9
 FN:25,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidFrom()
-FNDA:2,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidFrom()
-DA:26,2
+FNDA:5,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidFrom()
+DA:26,5
 FN:26,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidTo()
-FNDA:1,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidTo()
-DA:27,1
+FNDA:3,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidTo()
+DA:27,3
 FN:31,System.Nullable`1<System.Decimal> Assignment_Example_HU.DTOs.UpdateDiscountDto::get_PercentOff()
 FNDA:1,System.Nullable`1<System.Decimal> Assignment_Example_HU.DTOs.UpdateDiscountDto::get_PercentOff()
 DA:32,1
@@ -5919,33 +5919,33 @@ FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\CreateDiscountDtoValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.CreateDiscountDtoValidator::.ctor()
-FNDA:1,System.Void Assignment_Example_HU.Configurations.Validation.CreateDiscountDtoValidator::.ctor()
-DA:8,1
-DA:9,1
-DA:10,1
-DA:11,1
-DA:12,1
-DA:14,1
-DA:15,1
-DA:17,1
-DA:18,1
-DA:19,1
-DA:20,1
-DA:22,1
-DA:23,1
-DA:24,1
-DA:25,1
-DA:26,1
-BRDA:23,14,0,0
-BRDA:23,14,1,1
-BRDA:23,30,0,1
+FNDA:2,System.Void Assignment_Example_HU.Configurations.Validation.CreateDiscountDtoValidator::.ctor()
+DA:8,2
+DA:9,2
+DA:10,2
+DA:11,2
+DA:12,2
+DA:14,2
+DA:15,2
+DA:17,2
+DA:18,2
+DA:19,2
+DA:20,2
+DA:22,2
+DA:23,2
+DA:24,2
+DA:25,2
+DA:26,2
+BRDA:23,14,0,1
+BRDA:23,14,1,2
+BRDA:23,30,0,2
 BRDA:23,46,0,1
-BRDA:23,46,1,0
+BRDA:23,46,1,1
 BRDA:23,30,1,0
 LF:16
 LH:16
 BRF:6
-BRH:3
+BRH:5
 FNF:1
 FNH:1
 end_of_record
@@ -5995,17 +5995,17 @@ FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\LoginRequestValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.LoginRequestValidator::.ctor()
-FNDA:7,System.Void Assignment_Example_HU.Configurations.Validation.LoginRequestValidator::.ctor()
-DA:8,7
-DA:9,7
-DA:10,7
-DA:11,7
-DA:12,7
-DA:13,7
-DA:15,7
-DA:16,7
-DA:17,7
-DA:18,7
+FNDA:8,System.Void Assignment_Example_HU.Configurations.Validation.LoginRequestValidator::.ctor()
+DA:8,8
+DA:9,8
+DA:10,8
+DA:11,8
+DA:12,8
+DA:13,8
+DA:15,8
+DA:16,8
+DA:17,8
+DA:18,8
 LF:10
 LH:10
 BRF:0
@@ -6015,22 +6015,22 @@ FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\RegisterRequestValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.RegisterRequestValidator::.ctor()
-FNDA:7,System.Void Assignment_Example_HU.Configurations.Validation.RegisterRequestValidator::.ctor()
-DA:8,7
-DA:9,7
-DA:10,7
-DA:11,7
-DA:12,7
-DA:13,7
-DA:15,7
-DA:16,7
-DA:17,7
-DA:18,7
-DA:20,7
-DA:21,7
-DA:22,7
-DA:23,7
-DA:24,7
+FNDA:8,System.Void Assignment_Example_HU.Configurations.Validation.RegisterRequestValidator::.ctor()
+DA:8,8
+DA:9,8
+DA:10,8
+DA:11,8
+DA:12,8
+DA:13,8
+DA:15,8
+DA:16,8
+DA:17,8
+DA:18,8
+DA:20,8
+DA:21,8
+DA:22,8
+DA:23,8
+DA:24,8
 LF:15
 LH:15
 BRF:0

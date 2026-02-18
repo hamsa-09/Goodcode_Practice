@@ -13,6 +13,18 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 
+// CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
@@ -48,6 +60,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseGlobalExceptionHandling();
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {
