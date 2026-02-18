@@ -1,0 +1,27 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\Users\Hp\source\repos\sportManagement\Services\AuthService.cs(79,32): error CS0103: The name 'Role' does not exist in the current context [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\AuthService.cs(85,22): error CS0136: A local or parameter named 'token' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\TokenService.cs(38,58): warning CS8604: Possible null reference argument for parameter 'value' in 'Claim.Claim(string type, string value)'. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\TokenService.cs(41,44): warning CS8604: Possible null reference argument for parameter 'value' in 'Claim.Claim(string type, string value)'. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Mappings\MappingProfile.cs(74,78): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Mappings\MappingProfile.cs(75,78): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Mappings\MappingProfile.cs(76,79): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\PaymentService.cs(87,55): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\RatingService.cs(198,28): warning CS8601: Possible null reference assignment. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+
+Build FAILED.
+
+C:\Users\Hp\source\repos\sportManagement\Services\TokenService.cs(38,58): warning CS8604: Possible null reference argument for parameter 'value' in 'Claim.Claim(string type, string value)'. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\TokenService.cs(41,44): warning CS8604: Possible null reference argument for parameter 'value' in 'Claim.Claim(string type, string value)'. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Mappings\MappingProfile.cs(74,78): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Mappings\MappingProfile.cs(75,78): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Mappings\MappingProfile.cs(76,79): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\PaymentService.cs(87,55): warning CS8602: Dereference of a possibly null reference. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\RatingService.cs(198,28): warning CS8601: Possible null reference assignment. [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\AuthService.cs(79,32): error CS0103: The name 'Role' does not exist in the current context [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+C:\Users\Hp\source\repos\sportManagement\Services\AuthService.cs(85,22): error CS0136: A local or parameter named 'token' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter [C:\Users\Hp\source\repos\sportManagement\Assignment_Example_HU.csproj]
+    7 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:05.16

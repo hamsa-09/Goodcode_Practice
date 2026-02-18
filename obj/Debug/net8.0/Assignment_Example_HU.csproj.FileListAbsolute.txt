@@ -1,0 +1,9 @@
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.csproj.AssemblyReference.cache
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.AssemblyInfoInputs.cache
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.AssemblyInfo.cs
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.csproj.CoreCompileInputs.cache
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Hp\source\repos\sportManagement\obj\Debug\net8.0\Assignment_Example_HU.sourcelink.json
