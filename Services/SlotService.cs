@@ -18,6 +18,8 @@ namespace Assignment_Example_HU.Services
         private readonly IPricingService _pricingService;
         private readonly IDistributedLockService _lockService;
         private readonly IDemandTrackingService _demandTrackingService;
+        private readonly ICourtRepository _courtRepository;
+        private readonly IVenueService _venueService;
         private readonly IMapper _mapper;
         private readonly TimeSpan _priceLockDuration = TimeSpan.FromMinutes(5);
         private readonly TimeSpan _bookingLockDuration = TimeSpan.FromMinutes(10);
@@ -27,12 +29,16 @@ namespace Assignment_Example_HU.Services
             IPricingService pricingService,
             IDistributedLockService lockService,
             IDemandTrackingService demandTrackingService,
+            ICourtRepository courtRepository,
+            IVenueService venueService,
             IMapper mapper)
         {
             _slotRepository = slotRepository;
             _pricingService = pricingService;
             _lockService = lockService;
             _demandTrackingService = demandTrackingService;
+            _courtRepository = courtRepository;
+            _venueService = venueService;
             _mapper = mapper;
         }
 
@@ -279,6 +285,60 @@ namespace Assignment_Example_HU.Services
             }
 
             await _slotRepository.SaveChangesAsync();
+        }
+
+        public async Task<int> GenerateSlotsAsync(GenerateSlotsDto dto, Guid userId)
+        {
+            var court = await _courtRepository.GetByIdWithVenueAsync(dto.CourtId);
+            if (court == null)
+            {
+                throw new NotFoundException("Court not found.");
+            }
+
+            // Verify ownership
+            if (!await _venueService.IsVenueOwnerAsync(court.VenueId, userId))
+            {
+                throw new ForbiddenException("Only the venue owner can generate slots.");
+            }
+
+            // Parse operating hours (Format: "09:00-22:00")
+            var parts = court.OperatingHours.Split('-');
+            if (parts.Length != 2 || !TimeSpan.TryParse(parts[0], out var openTime) || !TimeSpan.TryParse(parts[1], out var closeTime))
+            {
+                throw new BadRequestException("Invalid operating hours format on court. Expected 'HH:mm-HH:mm'.");
+            }
+
+            var baseDate = dto.Date.Date;
+            var currentStartTime = baseDate.Add(openTime);
+            var endTimeLimit = baseDate.Add(closeTime);
+
+            int slotsCreated = 0;
+            while (currentStartTime.AddMinutes(court.SlotDurationMinutes) <= endTimeLimit)
+            {
+                var slotEndTime = currentStartTime.AddMinutes(court.SlotDurationMinutes);
+
+                // Add slot if it doesn't exist for this time
+                var existingSlots = await _slotRepository.GetAvailableSlotsAsync(court.Id, null, currentStartTime, slotEndTime);
+                if (!existingSlots.Any(s => s.StartTime == currentStartTime))
+                {
+                    var slot = new Slot
+                    {
+                        Id = Guid.NewGuid(),
+                        CourtId = court.Id,
+                        StartTime = currentStartTime,
+                        EndTime = slotEndTime,
+                        Status = SlotStatus.Available,
+                        Price = court.BasePrice
+                    };
+                    await _slotRepository.AddAsync(slot);
+                    slotsCreated++;
+                }
+
+                currentStartTime = slotEndTime;
+            }
+
+            await _slotRepository.SaveChangesAsync();
+            return slotsCreated;
         }
     }
 }

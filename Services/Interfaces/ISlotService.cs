@@ -19,5 +19,6 @@ namespace Assignment_Example_HU.Services.Interfaces
         Task<bool> ReleaseLockAsync(Guid slotId, Guid userId);
         Task<bool> CancelBookingAsync(Guid slotId, Guid userId);
         Task ExpireLocksAsync();
+        Task<int> GenerateSlotsAsync(GenerateSlotsDto dto, Guid userId);
     }
 }

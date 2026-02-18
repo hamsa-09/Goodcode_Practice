@@ -34,6 +34,7 @@ namespace Assignment_Example_HU.Extensions
             services.AddScoped<IRatingRepository, RatingRepository>();
 
             // Services
+            services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IVenueService, VenueService>();
@@ -59,6 +60,7 @@ namespace Assignment_Example_HU.Extensions
             services.AddHostedService<RefundProcessingService>();
             services.AddHostedService<DiscountExpiryService>();
             services.AddHostedService<WaitlistCleanupService>();
+            services.AddHostedService<GameCompletionService>();
 
             return services;
         }

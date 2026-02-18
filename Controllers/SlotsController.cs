@@ -98,6 +98,18 @@ namespace Assignment_Example_HU.Controllers
             return Ok(new { success = result });
         }
 
+        /// <summary>
+        /// Bulk generate slots for a court (Venue Owner only).
+        /// </summary>
+        [HttpPost("generate")]
+        [Authorize]
+        public async Task<ActionResult<object>> GenerateSlots([FromBody] GenerateSlotsDto dto)
+        {
+            var userId = GetCurrentUserId();
+            var count = await _slotService.GenerateSlotsAsync(dto, userId);
+            return Ok(new { success = true, slotsCreated = count });
+        }
+
         private Guid GetCurrentUserId()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

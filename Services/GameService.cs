@@ -202,5 +202,32 @@ namespace Assignment_Example_HU.Services
 
             await _gameRepository.SaveChangesAsync();
         }
+
+        public async Task CompleteGamesAsync()
+        {
+            var now = DateTime.UtcNow;
+            var ongoingGames = await _gameRepository.GetAllAsync();
+            var pendingOrBookedGames = ongoingGames.Where(g => g.Status == GameStatus.Pending || g.Status == GameStatus.Confirmed);
+
+            foreach (var game in pendingOrBookedGames)
+            {
+                var slot = await _slotRepository.GetByIdAsync(game.SlotId);
+                if (slot != null && slot.EndTime <= now)
+                {
+                    game.Status = GameStatus.Completed;
+                    await _gameRepository.UpdateAsync(game);
+
+                    var slotToUpdate = await _slotRepository.GetByIdWithCourtAsync(game.SlotId);
+                    if (slotToUpdate != null && slotToUpdate.Status == SlotStatus.Booked)
+                    {
+                        slotToUpdate.Status = SlotStatus.Completed;
+                        await _slotRepository.UpdateAsync(slotToUpdate);
+                    }
+                }
+            }
+
+            await _gameRepository.SaveChangesAsync();
+            await _slotRepository.SaveChangesAsync();
+        }
     }
 }

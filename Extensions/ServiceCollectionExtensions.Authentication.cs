@@ -25,16 +25,18 @@ namespace Assignment_Example_HU.Extensions
                 })
                 .AddJwtBearer(options =>
                 {
+                    options.RequireHttpsMetadata = false; // Allow HTTP for development
+                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidIssuer = issuer,
-                        ValidAudience = audience,
-                        IssuerSigningKey = key,
-                        ValidateIssuerSigningKey = true,
                         ValidateIssuer = true,
+                        ValidIssuer = issuer,
                         ValidateAudience = true,
+                        ValidAudience = audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = key,
                         ValidateLifetime = true,
-                        ClockSkew = System.TimeSpan.Zero
+                        ClockSkew = System.TimeSpan.FromSeconds(30)
                     };
                 });
 
@@ -42,4 +44,3 @@ namespace Assignment_Example_HU.Extensions
         }
     }
 }
-

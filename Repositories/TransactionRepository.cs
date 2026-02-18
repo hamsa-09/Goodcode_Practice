@@ -53,6 +53,14 @@ namespace Assignment_Example_HU.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Transaction>> GetAllAsync()
+        {
+            return await _dbContext.Transactions
+                .AsNoTracking()
+                .OrderByDescending(t => t.CreatedAt)
+                .ToListAsync();
+        }
+
         public async Task AddAsync(Transaction transaction)
         {
             await _dbContext.Transactions.AddAsync(transaction);

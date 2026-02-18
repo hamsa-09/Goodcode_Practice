@@ -16,5 +16,6 @@ namespace Assignment_Example_HU.Services.Interfaces
         Task<bool> CancelGameAsync(Guid gameId, Guid userId);
         Task<IEnumerable<Game>> GetPendingGamesWithLowPlayersAsync(int minPlayers);
         Task CancelGamesWithLowPlayersAsync();
+        Task CompleteGamesAsync();
     }
 }
