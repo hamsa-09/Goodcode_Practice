@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Assignment_Example_HU.Exceptions;
 
 namespace Assignment_Example_HU.Middleware
 {
@@ -35,31 +36,51 @@ namespace Assignment_Example_HU.Middleware
         {
             var statusCode = HttpStatusCode.InternalServerError;
             var message = "An unexpected error occurred.";
+            var type = "Error";
 
-            switch (exception)
+            if (exception is BaseException baseEx)
             {
-                case UnauthorizedAccessException:
-                    statusCode = HttpStatusCode.Unauthorized;
-                    message = exception.Message;
-                    break;
-                case InvalidOperationException:
-                    statusCode = HttpStatusCode.BadRequest;
-                    message = exception.Message;
-                    break;
+                statusCode = baseEx.StatusCode;
+                message = baseEx.Message;
+                type = baseEx.GetType().Name;
+            }
+            else
+            {
+                switch (exception)
+                {
+                    case UnauthorizedAccessException:
+                        statusCode = HttpStatusCode.Unauthorized;
+                        message = exception.Message;
+                        type = "UnauthorizedError";
+                        break;
+                    case InvalidOperationException:
+                        statusCode = HttpStatusCode.BadRequest;
+                        message = exception.Message;
+                        type = "BadRequestError";
+                        break;
+                    case ArgumentException:
+                        statusCode = HttpStatusCode.BadRequest;
+                        message = exception.Message;
+                        type = "ArgumentError";
+                        break;
+                }
             }
 
             context.Response.StatusCode = (int)statusCode;
             context.Response.ContentType = "application/json";
 
-            var response = new
+            var response = new Assignment_Example_HU.DTOs.ErrorResponseDto
             {
-                error = message,
-                statusCode = context.Response.StatusCode
+                Success = false,
+                Type = type,
+                Message = message,
+                StatusCode = (int)statusCode,
+                Timestamp = DateTime.UtcNow
             };
 
-            var json = JsonSerializer.Serialize(response);
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            var json = JsonSerializer.Serialize(response, options);
             await context.Response.WriteAsync(json);
         }
     }
 }
-

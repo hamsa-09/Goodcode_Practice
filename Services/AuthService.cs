@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Assignment_Example_HU.DTOs;
 using Assignment_Example_HU.Enums;
+using Assignment_Example_HU.Exceptions;
 using Assignment_Example_HU.Models;
 using Assignment_Example_HU.Services.Interfaces;
 
@@ -32,7 +33,7 @@ namespace Assignment_Example_HU.Services
             var existingUser = await _userManager.FindByEmailAsync(dto.Email.Trim());
             if (existingUser != null)
             {
-                throw new InvalidOperationException("Email is already registered.");
+                throw new ConflictException("Email is already registered.");
             }
 
             var user = new User
@@ -52,7 +53,7 @@ namespace Assignment_Example_HU.Services
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                throw new InvalidOperationException($"Registration failed: {errors}");
+                throw new BadRequestException($"Registration failed: {errors}");
             }
 
             var (token, expiresAt) = _tokenService.GenerateAccessToken(user);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using AutoMapper;
 using Assignment_Example_HU.DTOs;
 using Assignment_Example_HU.Enums;
+using Assignment_Example_HU.Exceptions;
 using Assignment_Example_HU.Models;
 using Assignment_Example_HU.Repositories.Interfaces;
 using Assignment_Example_HU.Services.Interfaces;
@@ -33,12 +34,12 @@ namespace Assignment_Example_HU.Services
             var owner = await _userManager.FindByIdAsync(ownerId.ToString());
             if (owner == null)
             {
-                throw new InvalidOperationException("Owner not found.");
+                throw new NotFoundException("Owner not found.");
             }
 
             if (owner.Role != Role.VenueOwner && owner.Role != Role.Admin)
             {
-                throw new UnauthorizedAccessException("Only VenueOwner or Admin can create venues.");
+                throw new ForbiddenException("Only VenueOwner or Admin can create venues.");
             }
 
             var venue = _mapper.Map<Venue>(dto);
@@ -88,12 +89,12 @@ namespace Assignment_Example_HU.Services
             var venue = await _venueRepository.GetByIdAsync(venueId);
             if (venue == null)
             {
-                throw new InvalidOperationException("Venue not found.");
+                throw new NotFoundException("Venue not found.");
             }
 
             if (!await IsVenueOwnerAsync(venueId, userId))
             {
-                throw new UnauthorizedAccessException("You can only update your own venues.");
+                throw new ForbiddenException("You can only access your own venues.");
             }
 
             _mapper.Map(dto, venue);
@@ -110,7 +111,7 @@ namespace Assignment_Example_HU.Services
             var venue = await _venueRepository.GetByIdAsync(venueId);
             if (venue == null)
             {
-                throw new InvalidOperationException("Venue not found.");
+                throw new NotFoundException("Venue not found.");
             }
 
             venue.ApprovalStatus = dto.ApprovalStatus;
@@ -125,12 +126,12 @@ namespace Assignment_Example_HU.Services
             var venue = await _venueRepository.GetByIdAsync(venueId);
             if (venue == null)
             {
-                throw new InvalidOperationException("Venue not found.");
+                throw new NotFoundException("Venue not found.");
             }
 
             if (!await IsVenueOwnerAsync(venueId, userId))
             {
-                throw new UnauthorizedAccessException("You can only delete your own venues.");
+                throw new ForbiddenException("You can only delete your own venues.");
             }
 
             // Note: In a real app, you might want soft delete or check for dependencies

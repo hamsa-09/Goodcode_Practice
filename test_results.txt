@@ -1,0 +1,31 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Assignment_Example_HU -> C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\Assignment_Example_HU.dll
+  Assignment_Example_HU.Tests -> C:\Users\Hp\source\repos\sportManagement\Tests\bin\Debug\net10.0\Assignment_Example_HU.Tests.dll
+Test run for C:\Users\Hp\source\repos\sportManagement\Tests\bin\Debug\net10.0\Assignment_Example_HU.Tests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.84]     Assignment_Example_HU.Tests.Services.WaitlistServiceTests.JoinWaitlistAsync_ReturnsMappedWaitlist_WhenSuccessful [FAIL]
+[xUnit.net 00:00:00.85]     Assignment_Example_HU.Tests.Services.WaitlistServiceTests.InviteFromWaitlistAsync_Works_WhenCreatorInvites [FAIL]
+  Failed Assignment_Example_HU.Tests.Services.WaitlistServiceTests.JoinWaitlistAsync_ReturnsMappedWaitlist_WhenSuccessful [1 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue(IConfiguration configuration, Type type, String key, Object defaultValue)
+   at Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue[T](IConfiguration configuration, String key, T defaultValue)
+   at Assignment_Example_HU.Services.WaitlistService..ctor(IWaitlistRepository waitlistRepository, IGameRepository gameRepository, UserManager`1 userManager, IRatingRepository ratingRepository, IGamePlayerRepository gamePlayerRepository, IConfiguration configuration, IMapper mapper) in C:\Users\Hp\source\repos\sportManagement\Services\WaitlistService.cs:line 40
+   at Assignment_Example_HU.Tests.Services.WaitlistServiceTests..ctor() in C:\Users\Hp\source\repos\sportManagement\Tests\WaitlistServiceTests.cs:line 41
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+  Failed Assignment_Example_HU.Tests.Services.WaitlistServiceTests.InviteFromWaitlistAsync_Works_WhenCreatorInvites [1 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue(IConfiguration configuration, Type type, String key, Object defaultValue)
+   at Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue[T](IConfiguration configuration, String key, T defaultValue)
+   at Assignment_Example_HU.Services.WaitlistService..ctor(IWaitlistRepository waitlistRepository, IGameRepository gameRepository, UserManager`1 userManager, IRatingRepository ratingRepository, IGamePlayerRepository gamePlayerRepository, IConfiguration configuration, IMapper mapper) in C:\Users\Hp\source\repos\sportManagement\Services\WaitlistService.cs:line 40
+   at Assignment_Example_HU.Tests.Services.WaitlistServiceTests..ctor() in C:\Users\Hp\source\repos\sportManagement\Tests\WaitlistServiceTests.cs:line 41
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+
+Failed!  - Failed:     2, Passed:    72, Skipped:     0, Total:    74, Duration: 1 s - Assignment_Example_HU.Tests.dll (net10.0)

@@ -55,6 +55,7 @@ C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\BuildHost-netcore\zh-
 C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\BuildHost-netcore\zh-Hant\System.CommandLine.resources.dll
 C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\appsettings.json
 C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\dotnet-tools.json
+C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\swagger_debug.json
 C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\Assignment_Example_HU.staticwebassets.endpoints.json
 C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\Assignment_Example_HU.exe
 C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\Assignment_Example_HU.deps.json
@@ -195,4 +196,3 @@ C:\Users\Hp\source\repos\sportManagement\obj\Debug\net10.0\Assignment_Example_HU
 C:\Users\Hp\source\repos\sportManagement\obj\Debug\net10.0\Assignment_Example_HU.pdb
 C:\Users\Hp\source\repos\sportManagement\obj\Debug\net10.0\Assignment_Example_HU.genruntimeconfig.cache
 C:\Users\Hp\source\repos\sportManagement\obj\Debug\net10.0\ref\Assignment_Example_HU.dll
-C:\Users\Hp\source\repos\sportManagement\bin\Debug\net10.0\swagger_debug.json

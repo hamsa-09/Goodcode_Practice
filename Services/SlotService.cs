@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Assignment_Example_HU.DTOs;
 using Assignment_Example_HU.Enums;
+using Assignment_Example_HU.Exceptions;
 using Assignment_Example_HU.Models;
 using Assignment_Example_HU.Repositories.Interfaces;
 using Assignment_Example_HU.Services.Interfaces;
@@ -108,7 +109,7 @@ namespace Assignment_Example_HU.Services
             var lockAcquired = await _lockService.AcquireLockAsync(lockKey, _bookingLockDuration);
             if (!lockAcquired)
             {
-                throw new InvalidOperationException("Slot is currently being processed by another user.");
+                throw new ConflictException("Slot is currently being processed by another user.");
             }
 
             try
@@ -116,12 +117,12 @@ namespace Assignment_Example_HU.Services
                 var slot = await _slotRepository.GetByIdAsync(slotId);
                 if (slot == null)
                 {
-                    throw new InvalidOperationException("Slot not found.");
+                    throw new NotFoundException("Slot not found.");
                 }
 
                 if (slot.Status != SlotStatus.Available)
                 {
-                    throw new InvalidOperationException($"Slot is not available. Current status: {slot.Status}");
+                    throw new BadRequestException($"Slot is not available. Current status: {slot.Status}");
                 }
 
                 // Get base price from court
@@ -163,7 +164,7 @@ namespace Assignment_Example_HU.Services
             var hasLock = await _lockService.IsLockedAsync(lockKey);
             if (!hasLock)
             {
-                throw new InvalidOperationException("You must lock the slot first before confirming.");
+                throw new BadRequestException("You must lock the slot first before confirming.");
             }
 
             try
@@ -171,17 +172,17 @@ namespace Assignment_Example_HU.Services
                 var slot = await _slotRepository.GetByIdAsync(slotId);
                 if (slot == null)
                 {
-                    throw new InvalidOperationException("Slot not found.");
+                    throw new NotFoundException("Slot not found.");
                 }
 
                 if (slot.Status != SlotStatus.Locked || slot.BookedByUserId != userId)
                 {
-                    throw new InvalidOperationException("Slot is not locked by you or lock has expired.");
+                    throw new ForbiddenException("Slot is not locked by you or lock has expired.");
                 }
 
                 if (slot.LockedUntil.HasValue && slot.LockedUntil.Value < DateTime.UtcNow)
                 {
-                    throw new InvalidOperationException("Price lock has expired. Please lock the slot again.");
+                    throw new BadRequestException("Price lock has expired. Please lock the slot again.");
                 }
 
                 // Confirm booking
@@ -235,7 +236,7 @@ namespace Assignment_Example_HU.Services
             var slot = await _slotRepository.GetByIdAsync(slotId);
             if (slot == null)
             {
-                throw new InvalidOperationException("Slot not found.");
+                throw new NotFoundException("Slot not found.");
             }
 
             if (slot.BookedByUserId != userId)
@@ -245,7 +246,7 @@ namespace Assignment_Example_HU.Services
 
             if (slot.Status != SlotStatus.Booked)
             {
-                throw new InvalidOperationException("Slot is not booked.");
+                throw new BadRequestException("Slot is not booked.");
             }
 
             slot.Status = SlotStatus.Cancelled;

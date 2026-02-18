@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Assignment_Example_HU.DTOs;
 using Assignment_Example_HU.Enums;
+using Assignment_Example_HU.Exceptions;
 using Assignment_Example_HU.Models;
 using Assignment_Example_HU.Repositories.Interfaces;
 using Assignment_Example_HU.Services.Interfaces;
@@ -35,12 +36,12 @@ namespace Assignment_Example_HU.Services
             var venue = await _venueRepository.GetByIdAsync(dto.VenueId);
             if (venue == null)
             {
-                throw new InvalidOperationException("Venue not found.");
+                throw new NotFoundException("Venue not found.");
             }
 
             if (!await _venueService.IsVenueOwnerAsync(dto.VenueId, venueOwnerId))
             {
-                throw new UnauthorizedAccessException("You can only create courts for your own venues.");
+                throw new ForbiddenException("You can only create courts for your own venues.");
             }
 
             var court = _mapper.Map<Court>(dto);
@@ -90,12 +91,12 @@ namespace Assignment_Example_HU.Services
             var court = await _courtRepository.GetByIdAsync(courtId);
             if (court == null)
             {
-                throw new InvalidOperationException("Court not found.");
+                throw new NotFoundException("Court not found.");
             }
 
             if (!await IsCourtOwnerAsync(courtId, userId))
             {
-                throw new UnauthorizedAccessException("You can only update courts in your own venues.");
+                throw new ForbiddenException("You do not have permission to modify this court.");
             }
 
             _mapper.Map(dto, court);
@@ -112,12 +113,12 @@ namespace Assignment_Example_HU.Services
             var court = await _courtRepository.GetByIdAsync(courtId);
             if (court == null)
             {
-                throw new InvalidOperationException("Court not found.");
+                throw new NotFoundException("Court not found.");
             }
 
             if (!await IsCourtOwnerAsync(courtId, userId))
             {
-                throw new UnauthorizedAccessException("You can only delete courts in your own venues.");
+                throw new ForbiddenException("You can only delete courts in your own venues.");
             }
 
             await _courtRepository.SaveChangesAsync();

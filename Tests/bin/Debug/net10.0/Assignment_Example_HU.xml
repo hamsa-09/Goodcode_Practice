@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assignment_Example_HU</name>
+    </assembly>
+    <members>
+        <member name="M:Assignment_Example_HU.Controllers.AuthController.Register(Assignment_Example_HU.DTOs.RegisterRequestDto)">
+            <summary>
+            Register a new user.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.AuthController.Login(Assignment_Example_HU.DTOs.LoginRequestDto)">
+            <summary>
+            Login and get JWT access token.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.CourtsController.GetAllCourts">
+            <summary>
+            Get all courts.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.CourtsController.GetCourt(System.Guid)">
+            <summary>
+            Get court by ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.CourtsController.GetCourtsByVenue(System.Guid)">
+            <summary>
+            Get courts by venue ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.CourtsController.CreateCourt(Assignment_Example_HU.DTOs.CreateCourtDto)">
+            <summary>
+            Create a new court (venue owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.CourtsController.UpdateCourt(System.Guid,Assignment_Example_HU.DTOs.UpdateCourtDto)">
+            <summary>
+            Update a court (venue owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.CourtsController.DeleteCourt(System.Guid)">
+            <summary>
+            Delete a court (venue owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.DiscountsController.GetDiscount(System.Guid)">
+            <summary>
+            Get discount by ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.DiscountsController.GetDiscountsByVenue(System.Guid)">
+            <summary>
+            Get discounts by venue ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.DiscountsController.GetDiscountsByCourt(System.Guid)">
+            <summary>
+            Get discounts by court ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.DiscountsController.CreateDiscount(Assignment_Example_HU.DTOs.CreateDiscountDto)">
+            <summary>
+            Create a new discount (venue/court owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.DiscountsController.UpdateDiscount(System.Guid,Assignment_Example_HU.DTOs.UpdateDiscountDto)">
+            <summary>
+            Update a discount (venue/court owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.DiscountsController.DeleteDiscount(System.Guid)">
+            <summary>
+            Delete a discount (venue/court owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.GamesController.GetGame(System.Guid)">
+            <summary>
+            Get game by ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.GamesController.GetMyGames">
+            <summary>
+            Get games created by the current user.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.GamesController.CreateGame(Assignment_Example_HU.DTOs.CreateGameDto)">
+            <summary>
+            Create a new game.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.GamesController.JoinGame(Assignment_Example_HU.DTOs.JoinGameDto)">
+            <summary>
+            Join a game.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.GamesController.LeaveGame(Assignment_Example_HU.DTOs.LeaveGameDto)">
+            <summary>
+            Leave a game.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.GamesController.CancelGame(System.Guid)">
+            <summary>
+            Cancel a game (creator only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.PaymentsController.ProcessPayment(Assignment_Example_HU.DTOs.PaymentDto)">
+            <summary>
+            Process payment for a locked slot (ACID transaction: debit wallet + confirm booking).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.CreateRating(Assignment_Example_HU.DTOs.CreateRatingDto)">
+            <summary>
+            Create a rating (venue, court, or player).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.GetVenueRatings(System.Guid)">
+            <summary>
+            Get ratings for a venue.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.GetCourtRatings(System.Guid)">
+            <summary>
+            Get ratings for a court.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.GetPlayerRatings(System.Guid)">
+            <summary>
+            Get ratings for a player.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.GetPlayerProfile(System.Guid)">
+            <summary>
+            Get player profile with aggregated rating and recent reviews.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.GetVenueRatingSummary(System.Guid)">
+            <summary>
+            Get venue rating summary (average and total).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RatingsController.GetCourtRatingSummary(System.Guid)">
+            <summary>
+            Get court rating summary (average and total).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RefundsController.RequestRefund(Assignment_Example_HU.DTOs.RequestRefundDto)">
+            <summary>
+            Request a refund for a booked slot.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.RefundsController.GetUserRefunds">
+            <summary>
+            Get user's refund history.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.SlotsController.GetAvailableSlots(System.Nullable{System.Guid},System.Nullable{System.Guid},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get available slots with dynamic pricing.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.SlotsController.GetSlotDetails(System.Guid)">
+            <summary>
+            Get slot details by ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.SlotsController.LockSlot(System.Guid)">
+            <summary>
+            Lock a slot for booking (reserves price for 5 minutes).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.SlotsController.ConfirmBooking(System.Guid)">
+            <summary>
+            Confirm booking after locking (completes the booking).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.SlotsController.ReleaseLock(System.Guid)">
+            <summary>
+            Release a locked slot (cancels the lock).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.SlotsController.CancelBooking(System.Guid)">
+            <summary>
+            Cancel a booked slot.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.GetAllVenues">
+            <summary>
+            Get all venues.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.GetVenue(System.Guid)">
+            <summary>
+            Get venue by ID.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.GetMyVenues">
+            <summary>
+            Get venues owned by the current user.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.CreateVenue(Assignment_Example_HU.DTOs.CreateVenueDto)">
+            <summary>
+            Create a new venue.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.UpdateVenue(System.Guid,Assignment_Example_HU.DTOs.UpdateVenueDto)">
+            <summary>
+            Update a venue (owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.UpdateVenueApproval(System.Guid,Assignment_Example_HU.DTOs.UpdateVenueApprovalDto)">
+            <summary>
+            Update venue approval status (Admin only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.VenuesController.DeleteVenue(System.Guid)">
+            <summary>
+            Delete a venue (owner only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WaitlistController.JoinWaitlist(Assignment_Example_HU.DTOs.JoinWaitlistDto)">
+            <summary>
+            Join waitlist for a game.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WaitlistController.LeaveWaitlist(Assignment_Example_HU.DTOs.JoinWaitlistDto)">
+            <summary>
+            Leave waitlist for a game.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WaitlistController.GetWaitlistByGame(System.Guid)">
+            <summary>
+            Get waitlist for a game (sorted by priority).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WaitlistController.InviteFromWaitlist(Assignment_Example_HU.DTOs.InviteFromWaitlistDto)">
+            <summary>
+            Invite a user from waitlist to join the game (game creator only).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WaitlistController.GetWaitlistCount(System.Guid)">
+            <summary>
+            Get waitlist count for a game.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WalletController.GetWallet">
+            <summary>
+            Get current user's wallet balance.
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WalletController.AddFunds(Assignment_Example_HU.DTOs.AddFundsDto)">
+            <summary>
+            Add funds to wallet (idempotent).
+            </summary>
+        </member>
+        <member name="M:Assignment_Example_HU.Controllers.WalletController.GetTransactionHistory">
+            <summary>
+            Get transaction history.
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+    </members>
+</doc>

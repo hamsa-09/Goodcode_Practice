@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Assignment_Example_HU.Configurations.Swagger;
 
 namespace Assignment_Example_HU.Extensions
 {
@@ -10,6 +11,7 @@ namespace Assignment_Example_HU.Extensions
         {
             services.AddSwaggerGen(c =>
             {
+                c.OperationFilter<ErrorResponseFilter>();
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Assignment Example HU API",
