@@ -3084,35 +3084,35 @@ FN:9,System.Guid Assignment_Example_HU.Models.Court::get_VenueId()
 FNDA:18,System.Guid Assignment_Example_HU.Models.Court::get_VenueId()
 DA:10,18
 FN:10,System.String Assignment_Example_HU.Models.Court::get_Name()
-FNDA:32,System.String Assignment_Example_HU.Models.Court::get_Name()
-DA:11,32
+FNDA:35,System.String Assignment_Example_HU.Models.Court::get_Name()
+DA:11,35
 FN:11,Assignment_Example_HU.Enums.SportType Assignment_Example_HU.Models.Court::get_SportType()
 FNDA:1,Assignment_Example_HU.Enums.SportType Assignment_Example_HU.Models.Court::get_SportType()
 DA:12,1
 FN:12,System.Int32 Assignment_Example_HU.Models.Court::get_SlotDurationMinutes()
-FNDA:22,System.Int32 Assignment_Example_HU.Models.Court::get_SlotDurationMinutes()
-DA:13,22
+FNDA:23,System.Int32 Assignment_Example_HU.Models.Court::get_SlotDurationMinutes()
+DA:13,23
 FN:13,System.Decimal Assignment_Example_HU.Models.Court::get_BasePrice()
 FNDA:1,System.Decimal Assignment_Example_HU.Models.Court::get_BasePrice()
 DA:14,1
 FN:14,System.String Assignment_Example_HU.Models.Court::get_OperatingHours()
-FNDA:26,System.String Assignment_Example_HU.Models.Court::get_OperatingHours()
-DA:15,26
+FNDA:27,System.String Assignment_Example_HU.Models.Court::get_OperatingHours()
+DA:15,27
 FN:15,System.Boolean Assignment_Example_HU.Models.Court::get_IsActive()
-FNDA:24,System.Boolean Assignment_Example_HU.Models.Court::get_IsActive()
-DA:16,24
+FNDA:25,System.Boolean Assignment_Example_HU.Models.Court::get_IsActive()
+DA:16,25
 FN:18,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Court::get_Venue()
-FNDA:26,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Court::get_Venue()
-DA:19,26
+FNDA:27,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Court::get_Venue()
+DA:19,27
 FN:19,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Models.Court::get_Slots()
-FNDA:22,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Models.Court::get_Slots()
-DA:20,22
+FNDA:23,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Models.Court::get_Slots()
+DA:20,23
 FN:20,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Models.Court::get_Discounts()
-FNDA:22,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Models.Court::get_Discounts()
-DA:21,22
+FNDA:23,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Models.Court::get_Discounts()
+DA:21,23
 FN:21,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Court::get_Ratings()
-FNDA:22,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Court::get_Ratings()
-DA:22,22
+FNDA:23,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Court::get_Ratings()
+DA:22,23
 LF:12
 LH:12
 BRF:0
@@ -3134,8 +3134,8 @@ FN:10,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Discount::get_
 FNDA:7,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Discount::get_CourtId()
 DA:11,7
 FN:11,System.Decimal Assignment_Example_HU.Models.Discount::get_PercentOff()
-FNDA:17,System.Decimal Assignment_Example_HU.Models.Discount::get_PercentOff()
-DA:12,17
+FNDA:19,System.Decimal Assignment_Example_HU.Models.Discount::get_PercentOff()
+DA:12,19
 FN:12,System.DateTime Assignment_Example_HU.Models.Discount::get_ValidFrom()
 FNDA:18,System.DateTime Assignment_Example_HU.Models.Discount::get_ValidFrom()
 DA:13,18
@@ -3143,8 +3143,8 @@ FN:13,System.DateTime Assignment_Example_HU.Models.Discount::get_ValidTo()
 FNDA:18,System.DateTime Assignment_Example_HU.Models.Discount::get_ValidTo()
 DA:14,18
 FN:14,System.Boolean Assignment_Example_HU.Models.Discount::get_IsActive()
-FNDA:40,System.Boolean Assignment_Example_HU.Models.Discount::get_IsActive()
-DA:15,40
+FNDA:41,System.Boolean Assignment_Example_HU.Models.Discount::get_IsActive()
+DA:15,41
 FN:17,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Discount::get_Venue()
 FNDA:0,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Discount::get_Venue()
 DA:18,0
@@ -3169,38 +3169,38 @@ FN:10,Assignment_Example_HU.Enums.GameType Assignment_Example_HU.Models.Game::ge
 FNDA:3,Assignment_Example_HU.Enums.GameType Assignment_Example_HU.Models.Game::get_Type()
 DA:11,3
 FN:11,System.Int32 Assignment_Example_HU.Models.Game::get_MinPlayers()
-FNDA:10,System.Int32 Assignment_Example_HU.Models.Game::get_MinPlayers()
-DA:12,10
+FNDA:12,System.Int32 Assignment_Example_HU.Models.Game::get_MinPlayers()
+DA:12,12
 FN:12,System.Int32 Assignment_Example_HU.Models.Game::get_MaxPlayers()
 FNDA:12,System.Int32 Assignment_Example_HU.Models.Game::get_MaxPlayers()
 DA:13,12
 FN:13,Assignment_Example_HU.Enums.GameStatus Assignment_Example_HU.Models.Game::get_Status()
-FNDA:77,Assignment_Example_HU.Enums.GameStatus Assignment_Example_HU.Models.Game::get_Status()
-DA:14,77
+FNDA:78,Assignment_Example_HU.Enums.GameStatus Assignment_Example_HU.Models.Game::get_Status()
+DA:14,78
 FN:14,System.Guid Assignment_Example_HU.Models.Game::get_CreatedByUserId()
 FNDA:19,System.Guid Assignment_Example_HU.Models.Game::get_CreatedByUserId()
 DA:15,19
 FN:15,System.DateTime Assignment_Example_HU.Models.Game::get_CreatedAt()
-FNDA:39,System.DateTime Assignment_Example_HU.Models.Game::get_CreatedAt()
-DA:16,39
+FNDA:40,System.DateTime Assignment_Example_HU.Models.Game::get_CreatedAt()
+DA:16,40
 FN:16,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Game::get_CancelledAt()
 FNDA:2,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Game::get_CancelledAt()
 DA:17,2
 FN:19,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Game::get_Slot()
-FNDA:38,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Game::get_Slot()
-DA:20,38
+FNDA:39,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Game::get_Slot()
+DA:20,39
 FN:20,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Game::get_CreatedByUser()
-FNDA:40,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Game::get_CreatedByUser()
-DA:21,40
+FNDA:41,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Game::get_CreatedByUser()
+DA:21,41
 FN:21,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Models.Game::get_Players()
-FNDA:83,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Models.Game::get_Players()
-DA:22,83
+FNDA:84,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Models.Game::get_Players()
+DA:22,84
 FN:22,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Waitlist> Assignment_Example_HU.Models.Game::get_Waitlist()
-FNDA:38,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Waitlist> Assignment_Example_HU.Models.Game::get_Waitlist()
-DA:23,38
+FNDA:39,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Waitlist> Assignment_Example_HU.Models.Game::get_Waitlist()
+DA:23,39
 FN:23,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Game::get_Ratings()
-FNDA:38,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Game::get_Ratings()
-DA:24,38
+FNDA:39,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Game::get_Ratings()
+DA:24,39
 LF:14
 LH:14
 BRF:0
@@ -3257,17 +3257,17 @@ FN:13,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Rating::get_Ga
 FNDA:4,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Rating::get_GameId()
 DA:14,4
 FN:14,System.Int32 Assignment_Example_HU.Models.Rating::get_Score()
-FNDA:20,System.Int32 Assignment_Example_HU.Models.Rating::get_Score()
-DA:15,20
+FNDA:22,System.Int32 Assignment_Example_HU.Models.Rating::get_Score()
+DA:15,22
 FN:15,System.String Assignment_Example_HU.Models.Rating::get_Comment()
 FNDA:3,System.String Assignment_Example_HU.Models.Rating::get_Comment()
 DA:16,3
 FN:16,System.DateTime Assignment_Example_HU.Models.Rating::get_CreatedAt()
-FNDA:21,System.DateTime Assignment_Example_HU.Models.Rating::get_CreatedAt()
-DA:17,21
+FNDA:22,System.DateTime Assignment_Example_HU.Models.Rating::get_CreatedAt()
+DA:17,22
 FN:19,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Rating::get_RatedBy()
-FNDA:20,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Rating::get_RatedBy()
-DA:20,20
+FNDA:21,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Rating::get_RatedBy()
+DA:20,21
 FN:20,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Rating::get_Venue()
 FNDA:2,Assignment_Example_HU.Models.Venue Assignment_Example_HU.Models.Rating::get_Venue()
 DA:21,2
@@ -3304,35 +3304,35 @@ FN:11,System.Decimal Assignment_Example_HU.Models.Refund::get_OriginalAmount()
 FNDA:1,System.Decimal Assignment_Example_HU.Models.Refund::get_OriginalAmount()
 DA:12,1
 FN:12,System.Decimal Assignment_Example_HU.Models.Refund::get_RefundAmount()
-FNDA:6,System.Decimal Assignment_Example_HU.Models.Refund::get_RefundAmount()
-DA:13,6
+FNDA:8,System.Decimal Assignment_Example_HU.Models.Refund::get_RefundAmount()
+DA:13,8
 FN:13,System.Decimal Assignment_Example_HU.Models.Refund::get_RefundPercentage()
 FNDA:1,System.Decimal Assignment_Example_HU.Models.Refund::get_RefundPercentage()
 DA:14,1
 FN:14,Assignment_Example_HU.Enums.RefundStatus Assignment_Example_HU.Models.Refund::get_Status()
-FNDA:30,Assignment_Example_HU.Enums.RefundStatus Assignment_Example_HU.Models.Refund::get_Status()
-DA:15,30
+FNDA:31,Assignment_Example_HU.Enums.RefundStatus Assignment_Example_HU.Models.Refund::get_Status()
+DA:15,31
 FN:15,System.String Assignment_Example_HU.Models.Refund::get_Reason()
-FNDA:22,System.String Assignment_Example_HU.Models.Refund::get_Reason()
-DA:16,22
+FNDA:23,System.String Assignment_Example_HU.Models.Refund::get_Reason()
+DA:16,23
 FN:16,System.String Assignment_Example_HU.Models.Refund::get_ReferenceId()
 FNDA:1,System.String Assignment_Example_HU.Models.Refund::get_ReferenceId()
 DA:17,1
 FN:17,System.DateTime Assignment_Example_HU.Models.Refund::get_CreatedAt()
-FNDA:15,System.DateTime Assignment_Example_HU.Models.Refund::get_CreatedAt()
-DA:18,15
+FNDA:16,System.DateTime Assignment_Example_HU.Models.Refund::get_CreatedAt()
+DA:18,16
 FN:18,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Refund::get_ProcessedAt()
 FNDA:1,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Refund::get_ProcessedAt()
 DA:19,1
 FN:21,Assignment_Example_HU.Models.Transaction Assignment_Example_HU.Models.Refund::get_Transaction()
-FNDA:13,Assignment_Example_HU.Models.Transaction Assignment_Example_HU.Models.Refund::get_Transaction()
-DA:22,13
+FNDA:14,Assignment_Example_HU.Models.Transaction Assignment_Example_HU.Models.Refund::get_Transaction()
+DA:22,14
 FN:22,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Refund::get_Slot()
-FNDA:13,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Refund::get_Slot()
-DA:23,13
+FNDA:14,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Refund::get_Slot()
+DA:23,14
 FN:23,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Refund::get_User()
-FNDA:13,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Refund::get_User()
-DA:24,13
+FNDA:14,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Refund::get_User()
+DA:24,14
 LF:15
 LH:15
 BRF:0
@@ -3348,8 +3348,8 @@ FN:9,System.Guid Assignment_Example_HU.Models.Slot::get_CourtId()
 FNDA:10,System.Guid Assignment_Example_HU.Models.Slot::get_CourtId()
 DA:10,10
 FN:10,System.DateTime Assignment_Example_HU.Models.Slot::get_StartTime()
-FNDA:15,System.DateTime Assignment_Example_HU.Models.Slot::get_StartTime()
-DA:11,15
+FNDA:17,System.DateTime Assignment_Example_HU.Models.Slot::get_StartTime()
+DA:11,17
 FN:11,System.DateTime Assignment_Example_HU.Models.Slot::get_EndTime()
 FNDA:1,System.DateTime Assignment_Example_HU.Models.Slot::get_EndTime()
 DA:12,1
@@ -3357,8 +3357,8 @@ FN:12,System.Decimal Assignment_Example_HU.Models.Slot::get_Price()
 FNDA:14,System.Decimal Assignment_Example_HU.Models.Slot::get_Price()
 DA:13,14
 FN:13,Assignment_Example_HU.Enums.SlotStatus Assignment_Example_HU.Models.Slot::get_Status()
-FNDA:100,Assignment_Example_HU.Enums.SlotStatus Assignment_Example_HU.Models.Slot::get_Status()
-DA:14,100
+FNDA:101,Assignment_Example_HU.Enums.SlotStatus Assignment_Example_HU.Models.Slot::get_Status()
+DA:14,101
 FN:14,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Slot::get_BookedByUserId()
 FNDA:40,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Slot::get_BookedByUserId()
 DA:15,40
@@ -3369,8 +3369,8 @@ FN:16,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Slot::get_
 FNDA:19,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Slot::get_LockedUntil()
 DA:17,19
 FN:19,Assignment_Example_HU.Models.Court Assignment_Example_HU.Models.Slot::get_Court()
-FNDA:45,Assignment_Example_HU.Models.Court Assignment_Example_HU.Models.Slot::get_Court()
-DA:20,45
+FNDA:46,Assignment_Example_HU.Models.Court Assignment_Example_HU.Models.Slot::get_Court()
+DA:20,46
 FN:20,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Slot::get_BookedByUser()
 FNDA:0,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Slot::get_BookedByUser()
 DA:21,0
@@ -3398,8 +3398,8 @@ FN:10,Assignment_Example_HU.Enums.TransactionType Assignment_Example_HU.Models.T
 FNDA:10,Assignment_Example_HU.Enums.TransactionType Assignment_Example_HU.Models.Transaction::get_Type()
 DA:11,10
 FN:11,System.Decimal Assignment_Example_HU.Models.Transaction::get_Amount()
-FNDA:18,System.Decimal Assignment_Example_HU.Models.Transaction::get_Amount()
-DA:12,18
+FNDA:20,System.Decimal Assignment_Example_HU.Models.Transaction::get_Amount()
+DA:12,20
 FN:12,System.Decimal Assignment_Example_HU.Models.Transaction::get_BalanceBefore()
 FNDA:5,System.Decimal Assignment_Example_HU.Models.Transaction::get_BalanceBefore()
 DA:13,5
@@ -3407,8 +3407,8 @@ FN:13,System.Decimal Assignment_Example_HU.Models.Transaction::get_BalanceAfter(
 FNDA:7,System.Decimal Assignment_Example_HU.Models.Transaction::get_BalanceAfter()
 DA:14,7
 FN:14,Assignment_Example_HU.Enums.TransactionStatus Assignment_Example_HU.Models.Transaction::get_Status()
-FNDA:39,Assignment_Example_HU.Enums.TransactionStatus Assignment_Example_HU.Models.Transaction::get_Status()
-DA:15,39
+FNDA:40,Assignment_Example_HU.Enums.TransactionStatus Assignment_Example_HU.Models.Transaction::get_Status()
+DA:15,40
 FN:15,System.String Assignment_Example_HU.Models.Transaction::get_Description()
 FNDA:5,System.String Assignment_Example_HU.Models.Transaction::get_Description()
 DA:16,5
@@ -3422,17 +3422,17 @@ FN:18,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Transaction::g
 FNDA:0,System.Nullable`1<System.Guid> Assignment_Example_HU.Models.Transaction::get_RelatedGameId()
 DA:19,0
 FN:19,System.DateTime Assignment_Example_HU.Models.Transaction::get_CreatedAt()
-FNDA:22,System.DateTime Assignment_Example_HU.Models.Transaction::get_CreatedAt()
-DA:20,22
+FNDA:23,System.DateTime Assignment_Example_HU.Models.Transaction::get_CreatedAt()
+DA:20,23
 FN:20,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Transaction::get_CompletedAt()
 FNDA:5,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Transaction::get_CompletedAt()
 DA:21,5
 FN:23,Assignment_Example_HU.Models.Wallet Assignment_Example_HU.Models.Transaction::get_Wallet()
-FNDA:20,Assignment_Example_HU.Models.Wallet Assignment_Example_HU.Models.Transaction::get_Wallet()
-DA:24,20
+FNDA:21,Assignment_Example_HU.Models.Wallet Assignment_Example_HU.Models.Transaction::get_Wallet()
+DA:24,21
 FN:24,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Transaction::get_User()
-FNDA:20,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Transaction::get_User()
-DA:25,20
+FNDA:21,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Transaction::get_User()
+DA:25,21
 FN:25,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Transaction::get_RelatedSlot()
 FNDA:0,Assignment_Example_HU.Models.Slot Assignment_Example_HU.Models.Transaction::get_RelatedSlot()
 DA:26,0
@@ -3451,8 +3451,8 @@ FN:10,Assignment_Example_HU.Enums.Role Assignment_Example_HU.Models.User::get_Ro
 FNDA:27,Assignment_Example_HU.Enums.Role Assignment_Example_HU.Models.User::get_Role()
 DA:11,27
 FN:12,System.DateTime Assignment_Example_HU.Models.User::get_CreatedAt()
-FNDA:37,System.DateTime Assignment_Example_HU.Models.User::get_CreatedAt()
-DA:13,37
+FNDA:38,System.DateTime Assignment_Example_HU.Models.User::get_CreatedAt()
+DA:13,38
 FN:14,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.User::get_LastLoginAt()
 FNDA:0,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.User::get_LastLoginAt()
 DA:15,0
@@ -3460,35 +3460,35 @@ FN:17,System.Nullable`1<System.Decimal> Assignment_Example_HU.Models.User::get_A
 FNDA:6,System.Nullable`1<System.Decimal> Assignment_Example_HU.Models.User::get_AggregatedRating()
 DA:18,6
 FN:18,System.Int32 Assignment_Example_HU.Models.User::get_GamesPlayed()
-FNDA:33,System.Int32 Assignment_Example_HU.Models.User::get_GamesPlayed()
-DA:19,33
+FNDA:34,System.Int32 Assignment_Example_HU.Models.User::get_GamesPlayed()
+DA:19,34
 FN:19,System.String Assignment_Example_HU.Models.User::get_PreferredSports()
 FNDA:0,System.String Assignment_Example_HU.Models.User::get_PreferredSports()
 DA:20,0
 FN:22,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Venue> Assignment_Example_HU.Models.User::get_OwnedVenues()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Venue> Assignment_Example_HU.Models.User::get_OwnedVenues()
-DA:23,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Venue> Assignment_Example_HU.Models.User::get_OwnedVenues()
+DA:23,34
 FN:23,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Models.User::get_BookedSlots()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Models.User::get_BookedSlots()
-DA:24,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Models.User::get_BookedSlots()
+DA:24,34
 FN:24,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Game> Assignment_Example_HU.Models.User::get_CreatedGames()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Game> Assignment_Example_HU.Models.User::get_CreatedGames()
-DA:25,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Game> Assignment_Example_HU.Models.User::get_CreatedGames()
+DA:25,34
 FN:25,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Models.User::get_GamePlayers()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Models.User::get_GamePlayers()
-DA:26,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Models.User::get_GamePlayers()
+DA:26,34
 FN:26,Assignment_Example_HU.Models.Wallet Assignment_Example_HU.Models.User::get_Wallet()
 FNDA:0,Assignment_Example_HU.Models.Wallet Assignment_Example_HU.Models.User::get_Wallet()
 DA:27,0
 FN:27,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Waitlist> Assignment_Example_HU.Models.User::get_Waitlists()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Waitlist> Assignment_Example_HU.Models.User::get_Waitlists()
-DA:28,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Waitlist> Assignment_Example_HU.Models.User::get_Waitlists()
+DA:28,34
 FN:28,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.User::get_RatingsGiven()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.User::get_RatingsGiven()
-DA:29,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.User::get_RatingsGiven()
+DA:29,34
 FN:29,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.User::get_RatingsReceived()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.User::get_RatingsReceived()
-DA:30,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.User::get_RatingsReceived()
+DA:30,34
 LF:14
 LH:11
 BRF:0
@@ -3501,35 +3501,35 @@ FN:8,System.Guid Assignment_Example_HU.Models.Venue::get_Id()
 FNDA:25,System.Guid Assignment_Example_HU.Models.Venue::get_Id()
 DA:9,25
 FN:9,System.String Assignment_Example_HU.Models.Venue::get_Name()
-FNDA:50,System.String Assignment_Example_HU.Models.Venue::get_Name()
-DA:10,50
+FNDA:53,System.String Assignment_Example_HU.Models.Venue::get_Name()
+DA:10,53
 FN:10,System.String Assignment_Example_HU.Models.Venue::get_Address()
-FNDA:40,System.String Assignment_Example_HU.Models.Venue::get_Address()
-DA:11,40
+FNDA:41,System.String Assignment_Example_HU.Models.Venue::get_Address()
+DA:11,41
 FN:11,System.String Assignment_Example_HU.Models.Venue::get_SportsSupported()
-FNDA:40,System.String Assignment_Example_HU.Models.Venue::get_SportsSupported()
-DA:12,40
+FNDA:41,System.String Assignment_Example_HU.Models.Venue::get_SportsSupported()
+DA:12,41
 FN:12,System.Guid Assignment_Example_HU.Models.Venue::get_OwnerId()
 FNDA:22,System.Guid Assignment_Example_HU.Models.Venue::get_OwnerId()
 DA:13,22
 FN:13,Assignment_Example_HU.Enums.ApprovalStatus Assignment_Example_HU.Models.Venue::get_ApprovalStatus()
-FNDA:42,Assignment_Example_HU.Enums.ApprovalStatus Assignment_Example_HU.Models.Venue::get_ApprovalStatus()
-DA:14,42
+FNDA:43,Assignment_Example_HU.Enums.ApprovalStatus Assignment_Example_HU.Models.Venue::get_ApprovalStatus()
+DA:14,43
 FN:14,System.DateTime Assignment_Example_HU.Models.Venue::get_CreatedAt()
-FNDA:35,System.DateTime Assignment_Example_HU.Models.Venue::get_CreatedAt()
-DA:15,35
+FNDA:36,System.DateTime Assignment_Example_HU.Models.Venue::get_CreatedAt()
+DA:15,36
 FN:17,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Venue::get_Owner()
-FNDA:35,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Venue::get_Owner()
-DA:18,35
+FNDA:36,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Venue::get_Owner()
+DA:18,36
 FN:18,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Court> Assignment_Example_HU.Models.Venue::get_Courts()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Court> Assignment_Example_HU.Models.Venue::get_Courts()
-DA:19,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Court> Assignment_Example_HU.Models.Venue::get_Courts()
+DA:19,34
 FN:19,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Models.Venue::get_Discounts()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Models.Venue::get_Discounts()
-DA:20,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Models.Venue::get_Discounts()
+DA:20,34
 FN:20,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Venue::get_Ratings()
-FNDA:33,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Venue::get_Ratings()
-DA:21,33
+FNDA:34,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Rating> Assignment_Example_HU.Models.Venue::get_Ratings()
+DA:21,34
 LF:11
 LH:11
 BRF:0
@@ -3551,17 +3551,17 @@ FN:9,System.Decimal Assignment_Example_HU.Models.Waitlist::get_PlayerRating()
 FNDA:1,System.Decimal Assignment_Example_HU.Models.Waitlist::get_PlayerRating()
 DA:10,1
 FN:10,System.Int32 Assignment_Example_HU.Models.Waitlist::get_Priority()
-FNDA:3,System.Int32 Assignment_Example_HU.Models.Waitlist::get_Priority()
-DA:11,3
+FNDA:5,System.Int32 Assignment_Example_HU.Models.Waitlist::get_Priority()
+DA:11,5
 FN:11,System.DateTime Assignment_Example_HU.Models.Waitlist::get_JoinedAt()
-FNDA:14,System.DateTime Assignment_Example_HU.Models.Waitlist::get_JoinedAt()
-DA:12,14
+FNDA:15,System.DateTime Assignment_Example_HU.Models.Waitlist::get_JoinedAt()
+DA:12,15
 FN:14,Assignment_Example_HU.Models.Game Assignment_Example_HU.Models.Waitlist::get_Game()
-FNDA:12,Assignment_Example_HU.Models.Game Assignment_Example_HU.Models.Waitlist::get_Game()
-DA:15,12
+FNDA:13,Assignment_Example_HU.Models.Game Assignment_Example_HU.Models.Waitlist::get_Game()
+DA:15,13
 FN:15,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Waitlist::get_User()
-FNDA:12,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Waitlist::get_User()
-DA:16,12
+FNDA:13,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Waitlist::get_User()
+DA:16,13
 LF:8
 LH:8
 BRF:0
@@ -3577,20 +3577,20 @@ FN:8,System.Guid Assignment_Example_HU.Models.Wallet::get_UserId()
 FNDA:13,System.Guid Assignment_Example_HU.Models.Wallet::get_UserId()
 DA:9,13
 FN:9,System.Decimal Assignment_Example_HU.Models.Wallet::get_Balance()
-FNDA:41,System.Decimal Assignment_Example_HU.Models.Wallet::get_Balance()
-DA:10,41
+FNDA:44,System.Decimal Assignment_Example_HU.Models.Wallet::get_Balance()
+DA:10,44
 FN:10,System.DateTime Assignment_Example_HU.Models.Wallet::get_CreatedAt()
-FNDA:13,System.DateTime Assignment_Example_HU.Models.Wallet::get_CreatedAt()
-DA:11,13
+FNDA:14,System.DateTime Assignment_Example_HU.Models.Wallet::get_CreatedAt()
+DA:11,14
 FN:11,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Wallet::get_UpdatedAt()
 FNDA:5,System.Nullable`1<System.DateTime> Assignment_Example_HU.Models.Wallet::get_UpdatedAt()
 DA:12,5
 FN:14,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Wallet::get_User()
-FNDA:13,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Wallet::get_User()
-DA:15,13
+FNDA:14,Assignment_Example_HU.Models.User Assignment_Example_HU.Models.Wallet::get_User()
+DA:15,14
 FN:15,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Transaction> Assignment_Example_HU.Models.Wallet::get_Transactions()
-FNDA:14,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Transaction> Assignment_Example_HU.Models.Wallet::get_Transactions()
-DA:16,14
+FNDA:15,System.Collections.Generic.ICollection`1<Assignment_Example_HU.Models.Transaction> Assignment_Example_HU.Models.Wallet::get_Transactions()
+DA:16,15
 LF:7
 LH:7
 BRF:0
@@ -3922,10 +3922,10 @@ FNH:0
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Exceptions\BadRequestException.cs
 FN:6,System.Void Assignment_Example_HU.Exceptions.BadRequestException::.ctor(System.String)
-FNDA:5,System.Void Assignment_Example_HU.Exceptions.BadRequestException::.ctor(System.String)
-DA:7,5
-DA:8,5
-DA:9,5
+FNDA:6,System.Void Assignment_Example_HU.Exceptions.BadRequestException::.ctor(System.String)
+DA:7,6
+DA:8,6
+DA:9,6
 LF:3
 LH:3
 BRF:0
@@ -3935,14 +3935,14 @@ FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Exceptions\BaseException.cs
 FN:7,System.Net.HttpStatusCode Assignment_Example_HU.Exceptions.BaseException::get_StatusCode()
-FNDA:1,System.Net.HttpStatusCode Assignment_Example_HU.Exceptions.BaseException::get_StatusCode()
-DA:8,1
+FNDA:5,System.Net.HttpStatusCode Assignment_Example_HU.Exceptions.BaseException::get_StatusCode()
+DA:8,5
 FN:9,System.Void Assignment_Example_HU.Exceptions.BaseException::.ctor(System.String,System.Net.HttpStatusCode)
-FNDA:25,System.Void Assignment_Example_HU.Exceptions.BaseException::.ctor(System.String,System.Net.HttpStatusCode)
-DA:10,25
-DA:11,25
-DA:12,25
-DA:13,25
+FNDA:29,System.Void Assignment_Example_HU.Exceptions.BaseException::.ctor(System.String,System.Net.HttpStatusCode)
+DA:10,29
+DA:11,29
+DA:12,29
+DA:13,29
 LF:5
 LH:5
 BRF:0
@@ -3952,10 +3952,10 @@ FNH:2
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Exceptions\ConflictException.cs
 FN:6,System.Void Assignment_Example_HU.Exceptions.ConflictException::.ctor(System.String)
-FNDA:2,System.Void Assignment_Example_HU.Exceptions.ConflictException::.ctor(System.String)
-DA:7,2
-DA:8,2
-DA:9,2
+FNDA:3,System.Void Assignment_Example_HU.Exceptions.ConflictException::.ctor(System.String)
+DA:7,3
+DA:8,3
+DA:9,3
 LF:3
 LH:3
 BRF:0
@@ -3965,10 +3965,10 @@ FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Exceptions\ForbiddenException.cs
 FN:6,System.Void Assignment_Example_HU.Exceptions.ForbiddenException::.ctor(System.String)
-FNDA:7,System.Void Assignment_Example_HU.Exceptions.ForbiddenException::.ctor(System.String)
-DA:7,7
-DA:8,7
-DA:9,7
+FNDA:8,System.Void Assignment_Example_HU.Exceptions.ForbiddenException::.ctor(System.String)
+DA:7,8
+DA:8,8
+DA:9,8
 LF:3
 LH:3
 BRF:0
@@ -3978,10 +3978,10 @@ FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Exceptions\NotFoundException.cs
 FN:6,System.Void Assignment_Example_HU.Exceptions.NotFoundException::.ctor(System.String)
-FNDA:11,System.Void Assignment_Example_HU.Exceptions.NotFoundException::.ctor(System.String)
-DA:7,11
-DA:8,11
-DA:9,11
+FNDA:12,System.Void Assignment_Example_HU.Exceptions.NotFoundException::.ctor(System.String)
+DA:7,12
+DA:8,12
+DA:9,12
 LF:3
 LH:3
 BRF:0
@@ -4035,23 +4035,23 @@ FN:15,System.Boolean Assignment_Example_HU.DTOs.CourtDto::get_IsActive()
 FNDA:0,System.Boolean Assignment_Example_HU.DTOs.CourtDto::get_IsActive()
 DA:16,0
 FN:20,System.Guid Assignment_Example_HU.DTOs.CreateCourtDto::get_VenueId()
-FNDA:8,System.Guid Assignment_Example_HU.DTOs.CreateCourtDto::get_VenueId()
-DA:21,8
+FNDA:9,System.Guid Assignment_Example_HU.DTOs.CreateCourtDto::get_VenueId()
+DA:21,9
 FN:21,System.String Assignment_Example_HU.DTOs.CreateCourtDto::get_Name()
-FNDA:7,System.String Assignment_Example_HU.DTOs.CreateCourtDto::get_Name()
-DA:22,7
+FNDA:9,System.String Assignment_Example_HU.DTOs.CreateCourtDto::get_Name()
+DA:22,9
 FN:22,Assignment_Example_HU.Enums.SportType Assignment_Example_HU.DTOs.CreateCourtDto::get_SportType()
 FNDA:0,Assignment_Example_HU.Enums.SportType Assignment_Example_HU.DTOs.CreateCourtDto::get_SportType()
 DA:23,0
 FN:23,System.Int32 Assignment_Example_HU.DTOs.CreateCourtDto::get_SlotDurationMinutes()
-FNDA:4,System.Int32 Assignment_Example_HU.DTOs.CreateCourtDto::get_SlotDurationMinutes()
-DA:24,4
+FNDA:7,System.Int32 Assignment_Example_HU.DTOs.CreateCourtDto::get_SlotDurationMinutes()
+DA:24,7
 FN:24,System.Decimal Assignment_Example_HU.DTOs.CreateCourtDto::get_BasePrice()
-FNDA:0,System.Decimal Assignment_Example_HU.DTOs.CreateCourtDto::get_BasePrice()
-DA:25,0
+FNDA:1,System.Decimal Assignment_Example_HU.DTOs.CreateCourtDto::get_BasePrice()
+DA:25,1
 FN:25,System.String Assignment_Example_HU.DTOs.CreateCourtDto::get_OperatingHours()
-FNDA:4,System.String Assignment_Example_HU.DTOs.CreateCourtDto::get_OperatingHours()
-DA:26,4
+FNDA:6,System.String Assignment_Example_HU.DTOs.CreateCourtDto::get_OperatingHours()
+DA:26,6
 FN:30,System.String Assignment_Example_HU.DTOs.UpdateCourtDto::get_Name()
 FNDA:1,System.String Assignment_Example_HU.DTOs.UpdateCourtDto::get_Name()
 DA:31,1
@@ -4071,11 +4071,11 @@ FN:35,System.Nullable`1<System.Boolean> Assignment_Example_HU.DTOs.UpdateCourtDt
 FNDA:0,System.Nullable`1<System.Boolean> Assignment_Example_HU.DTOs.UpdateCourtDto::get_IsActive()
 DA:36,0
 LF:21
-LH:9
+LH:10
 BRF:0
 BRH:0
 FNF:21
-FNH:9
+FNH:10
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\DTOs\DiscountDto.cs
 FN:7,System.Guid Assignment_Example_HU.DTOs.DiscountDto::get_Id()
@@ -4112,20 +4112,20 @@ FN:21,Assignment_Example_HU.Enums.DiscountScope Assignment_Example_HU.DTOs.Creat
 FNDA:10,Assignment_Example_HU.Enums.DiscountScope Assignment_Example_HU.DTOs.CreateDiscountDto::get_Scope()
 DA:22,10
 FN:22,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_VenueId()
-FNDA:6,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_VenueId()
-DA:23,6
+FNDA:8,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_VenueId()
+DA:23,8
 FN:23,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_CourtId()
-FNDA:6,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_CourtId()
-DA:24,6
+FNDA:7,System.Nullable`1<System.Guid> Assignment_Example_HU.DTOs.CreateDiscountDto::get_CourtId()
+DA:24,7
 FN:24,System.Decimal Assignment_Example_HU.DTOs.CreateDiscountDto::get_PercentOff()
-FNDA:5,System.Decimal Assignment_Example_HU.DTOs.CreateDiscountDto::get_PercentOff()
-DA:25,5
+FNDA:7,System.Decimal Assignment_Example_HU.DTOs.CreateDiscountDto::get_PercentOff()
+DA:25,7
 FN:25,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidFrom()
-FNDA:0,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidFrom()
-DA:26,0
+FNDA:2,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidFrom()
+DA:26,2
 FN:26,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidTo()
-FNDA:0,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidTo()
-DA:27,0
+FNDA:1,System.DateTime Assignment_Example_HU.DTOs.CreateDiscountDto::get_ValidTo()
+DA:27,1
 FN:31,System.Nullable`1<System.Decimal> Assignment_Example_HU.DTOs.UpdateDiscountDto::get_PercentOff()
 FNDA:1,System.Nullable`1<System.Decimal> Assignment_Example_HU.DTOs.UpdateDiscountDto::get_PercentOff()
 DA:32,1
@@ -4139,11 +4139,11 @@ FN:34,System.Nullable`1<System.Boolean> Assignment_Example_HU.DTOs.UpdateDiscoun
 FNDA:0,System.Nullable`1<System.Boolean> Assignment_Example_HU.DTOs.UpdateDiscountDto::get_IsActive()
 DA:35,0
 LF:20
-LH:7
+LH:9
 BRF:0
 BRH:0
 FNF:20
-FNH:7
+FNH:9
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\DTOs\ErrorResponseDto.cs
 FN:6,System.Boolean Assignment_Example_HU.DTOs.ErrorResponseDto::get_Success()
@@ -4212,17 +4212,17 @@ FN:25,System.DateTime Assignment_Example_HU.DTOs.GamePlayerDto::get_JoinedAt()
 FNDA:1,System.DateTime Assignment_Example_HU.DTOs.GamePlayerDto::get_JoinedAt()
 DA:26,1
 FN:30,System.Guid Assignment_Example_HU.DTOs.CreateGameDto::get_SlotId()
-FNDA:3,System.Guid Assignment_Example_HU.DTOs.CreateGameDto::get_SlotId()
-DA:31,3
+FNDA:4,System.Guid Assignment_Example_HU.DTOs.CreateGameDto::get_SlotId()
+DA:31,4
 FN:31,Assignment_Example_HU.Enums.GameType Assignment_Example_HU.DTOs.CreateGameDto::get_Type()
 FNDA:1,Assignment_Example_HU.Enums.GameType Assignment_Example_HU.DTOs.CreateGameDto::get_Type()
 DA:32,1
 FN:32,System.Int32 Assignment_Example_HU.DTOs.CreateGameDto::get_MinPlayers()
-FNDA:0,System.Int32 Assignment_Example_HU.DTOs.CreateGameDto::get_MinPlayers()
-DA:33,0
+FNDA:2,System.Int32 Assignment_Example_HU.DTOs.CreateGameDto::get_MinPlayers()
+DA:33,2
 FN:33,System.Int32 Assignment_Example_HU.DTOs.CreateGameDto::get_MaxPlayers()
-FNDA:0,System.Int32 Assignment_Example_HU.DTOs.CreateGameDto::get_MaxPlayers()
-DA:34,0
+FNDA:3,System.Int32 Assignment_Example_HU.DTOs.CreateGameDto::get_MaxPlayers()
+DA:34,3
 FN:38,System.Guid Assignment_Example_HU.DTOs.JoinGameDto::get_GameId()
 FNDA:13,System.Guid Assignment_Example_HU.DTOs.JoinGameDto::get_GameId()
 DA:39,13
@@ -4230,19 +4230,19 @@ FN:43,System.Guid Assignment_Example_HU.DTOs.LeaveGameDto::get_GameId()
 FNDA:11,System.Guid Assignment_Example_HU.DTOs.LeaveGameDto::get_GameId()
 DA:44,11
 LF:20
-LH:18
+LH:20
 BRF:0
 BRH:0
 FNF:20
-FNH:18
+FNH:20
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\DTOs\LoginRequestDto.cs
 FN:4,System.String Assignment_Example_HU.DTOs.LoginRequestDto::get_Email()
-FNDA:16,System.String Assignment_Example_HU.DTOs.LoginRequestDto::get_Email()
-DA:5,16
+FNDA:19,System.String Assignment_Example_HU.DTOs.LoginRequestDto::get_Email()
+DA:5,19
 FN:5,System.String Assignment_Example_HU.DTOs.LoginRequestDto::get_Password()
-FNDA:14,System.String Assignment_Example_HU.DTOs.LoginRequestDto::get_Password()
-DA:6,14
+FNDA:16,System.String Assignment_Example_HU.DTOs.LoginRequestDto::get_Password()
+DA:6,16
 LF:2
 LH:2
 BRF:0
@@ -4380,17 +4380,17 @@ FNH:35
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\DTOs\RegisterRequestDto.cs
 FN:6,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_Email()
-FNDA:22,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_Email()
-DA:7,22
+FNDA:28,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_Email()
+DA:7,28
 FN:7,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_UserName()
-FNDA:14,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_UserName()
-DA:8,14
+FNDA:19,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_UserName()
+DA:8,19
 FN:8,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_Password()
-FNDA:14,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_Password()
-DA:9,14
+FNDA:19,System.String Assignment_Example_HU.DTOs.RegisterRequestDto::get_Password()
+DA:9,19
 FN:9,Assignment_Example_HU.Enums.Role Assignment_Example_HU.DTOs.RegisterRequestDto::get_Role()
-FNDA:12,Assignment_Example_HU.Enums.Role Assignment_Example_HU.DTOs.RegisterRequestDto::get_Role()
-DA:10,12
+FNDA:14,Assignment_Example_HU.Enums.Role Assignment_Example_HU.DTOs.RegisterRequestDto::get_Role()
+DA:10,14
 LF:4
 LH:4
 BRF:0
@@ -4563,14 +4563,14 @@ FN:14,System.DateTime Assignment_Example_HU.DTOs.VenueDto::get_CreatedAt()
 FNDA:1,System.DateTime Assignment_Example_HU.DTOs.VenueDto::get_CreatedAt()
 DA:15,1
 FN:19,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_Name()
-FNDA:9,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_Name()
-DA:20,9
+FNDA:12,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_Name()
+DA:20,12
 FN:20,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_Address()
-FNDA:5,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_Address()
-DA:21,5
+FNDA:7,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_Address()
+DA:21,7
 FN:21,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_SportsSupported()
-FNDA:5,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_SportsSupported()
-DA:22,5
+FNDA:7,System.String Assignment_Example_HU.DTOs.CreateVenueDto::get_SportsSupported()
+DA:22,7
 FN:26,System.String Assignment_Example_HU.DTOs.UpdateVenueDto::get_Name()
 FNDA:1,System.String Assignment_Example_HU.DTOs.UpdateVenueDto::get_Name()
 DA:27,1
@@ -4764,14 +4764,14 @@ FN:15,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Court> 
 FNDA:5,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Court> Assignment_Example_HU.Data.AppDbContext::get_Courts()
 DA:16,5
 FN:16,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Data.AppDbContext::get_Discounts()
-FNDA:4,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Data.AppDbContext::get_Discounts()
-DA:17,4
+FNDA:5,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Discount> Assignment_Example_HU.Data.AppDbContext::get_Discounts()
+DA:17,5
 FN:17,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Data.AppDbContext::get_Slots()
 FNDA:15,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Slot> Assignment_Example_HU.Data.AppDbContext::get_Slots()
 DA:18,15
 FN:18,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Game> Assignment_Example_HU.Data.AppDbContext::get_Games()
-FNDA:4,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Game> Assignment_Example_HU.Data.AppDbContext::get_Games()
-DA:19,4
+FNDA:5,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.Game> Assignment_Example_HU.Data.AppDbContext::get_Games()
+DA:19,5
 FN:19,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Data.AppDbContext::get_GamePlayers()
 FNDA:4,Microsoft.EntityFrameworkCore.DbSet`1<Assignment_Example_HU.Models.GamePlayer> Assignment_Example_HU.Data.AppDbContext::get_GamePlayers()
 DA:20,4
@@ -5200,10 +5200,10 @@ DA:456,2
 DA:457,4
 DA:458,2
 FN:9,System.Void Assignment_Example_HU.Data.AppDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Assignment_Example_HU.Data.AppDbContext>)
-FNDA:99,System.Void Assignment_Example_HU.Data.AppDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Assignment_Example_HU.Data.AppDbContext>)
-DA:10,99
-DA:11,99
-DA:12,99
+FNDA:101,System.Void Assignment_Example_HU.Data.AppDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Assignment_Example_HU.Data.AppDbContext>)
+DA:10,101
+DA:11,101
+DA:12,101
 LF:421
 LH:421
 BRF:0
@@ -5892,151 +5892,151 @@ FNH:5
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\CreateCourtDtoValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.CreateCourtDtoValidator::.ctor()
-FNDA:0,System.Void Assignment_Example_HU.Configurations.Validation.CreateCourtDtoValidator::.ctor()
-DA:8,0
-DA:9,0
-DA:10,0
-DA:11,0
-DA:13,0
-DA:14,0
-DA:15,0
-DA:17,0
-DA:18,0
-DA:19,0
-DA:21,0
-DA:22,0
-DA:23,0
-DA:25,0
-DA:26,0
-DA:27,0
-DA:28,0
+FNDA:1,System.Void Assignment_Example_HU.Configurations.Validation.CreateCourtDtoValidator::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+DA:11,1
+DA:13,1
+DA:14,1
+DA:15,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:21,1
+DA:22,1
+DA:23,1
+DA:25,1
+DA:26,1
+DA:27,1
+DA:28,1
 LF:17
-LH:0
+LH:17
 BRF:0
 BRH:0
 FNF:1
-FNH:0
+FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\CreateDiscountDtoValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.CreateDiscountDtoValidator::.ctor()
-FNDA:0,System.Void Assignment_Example_HU.Configurations.Validation.CreateDiscountDtoValidator::.ctor()
-DA:8,0
-DA:9,0
-DA:10,0
-DA:11,0
-DA:12,0
-DA:14,0
-DA:15,0
-DA:17,0
-DA:18,0
-DA:19,0
-DA:20,0
-DA:22,0
-DA:23,0
-DA:24,0
-DA:25,0
-DA:26,0
+FNDA:1,System.Void Assignment_Example_HU.Configurations.Validation.CreateDiscountDtoValidator::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+DA:11,1
+DA:12,1
+DA:14,1
+DA:15,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:22,1
+DA:23,1
+DA:24,1
+DA:25,1
+DA:26,1
 BRDA:23,14,0,0
-BRDA:23,14,1,0
-BRDA:23,30,0,0
-BRDA:23,46,0,0
+BRDA:23,14,1,1
+BRDA:23,30,0,1
+BRDA:23,46,0,1
 BRDA:23,46,1,0
 BRDA:23,30,1,0
 LF:16
-LH:0
+LH:16
 BRF:6
-BRH:0
+BRH:3
 FNF:1
-FNH:0
+FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\CreateGameDtoValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.CreateGameDtoValidator::.ctor()
-FNDA:0,System.Void Assignment_Example_HU.Configurations.Validation.CreateGameDtoValidator::.ctor()
-DA:8,0
-DA:9,0
-DA:10,0
-DA:11,0
-DA:13,0
-DA:14,0
-DA:15,0
-DA:16,0
-DA:18,0
-DA:19,0
-DA:20,0
-DA:21,0
+FNDA:1,System.Void Assignment_Example_HU.Configurations.Validation.CreateGameDtoValidator::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+DA:11,1
+DA:13,1
+DA:14,1
+DA:15,1
+DA:16,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:21,1
 LF:12
-LH:0
+LH:12
 BRF:0
 BRH:0
 FNF:1
-FNH:0
+FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\CreateVenueDtoValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.CreateVenueDtoValidator::.ctor()
-FNDA:0,System.Void Assignment_Example_HU.Configurations.Validation.CreateVenueDtoValidator::.ctor()
-DA:8,0
-DA:9,0
-DA:10,0
-DA:11,0
-DA:12,0
-DA:14,0
-DA:15,0
-DA:16,0
-DA:18,0
-DA:19,0
-DA:20,0
-DA:21,0
+FNDA:1,System.Void Assignment_Example_HU.Configurations.Validation.CreateVenueDtoValidator::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+DA:11,1
+DA:12,1
+DA:14,1
+DA:15,1
+DA:16,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:21,1
 LF:12
-LH:0
+LH:12
 BRF:0
 BRH:0
 FNF:1
-FNH:0
+FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\LoginRequestValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.LoginRequestValidator::.ctor()
-FNDA:0,System.Void Assignment_Example_HU.Configurations.Validation.LoginRequestValidator::.ctor()
-DA:8,0
-DA:9,0
-DA:10,0
-DA:11,0
-DA:12,0
-DA:13,0
-DA:15,0
-DA:16,0
-DA:17,0
-DA:18,0
+FNDA:7,System.Void Assignment_Example_HU.Configurations.Validation.LoginRequestValidator::.ctor()
+DA:8,7
+DA:9,7
+DA:10,7
+DA:11,7
+DA:12,7
+DA:13,7
+DA:15,7
+DA:16,7
+DA:17,7
+DA:18,7
 LF:10
-LH:0
+LH:10
 BRF:0
 BRH:0
 FNF:1
-FNH:0
+FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Validation\RegisterRequestValidator.cs
 FN:7,System.Void Assignment_Example_HU.Configurations.Validation.RegisterRequestValidator::.ctor()
-FNDA:0,System.Void Assignment_Example_HU.Configurations.Validation.RegisterRequestValidator::.ctor()
-DA:8,0
-DA:9,0
-DA:10,0
-DA:11,0
-DA:12,0
-DA:13,0
-DA:15,0
-DA:16,0
-DA:17,0
-DA:18,0
-DA:20,0
-DA:21,0
-DA:22,0
-DA:23,0
-DA:24,0
+FNDA:7,System.Void Assignment_Example_HU.Configurations.Validation.RegisterRequestValidator::.ctor()
+DA:8,7
+DA:9,7
+DA:10,7
+DA:11,7
+DA:12,7
+DA:13,7
+DA:15,7
+DA:16,7
+DA:17,7
+DA:18,7
+DA:20,7
+DA:21,7
+DA:22,7
+DA:23,7
+DA:24,7
 LF:15
-LH:0
+LH:15
 BRF:0
 BRH:0
 FNF:1
-FNH:0
+FNH:1
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\Configurations\Swagger\ErrorResponseFilter.cs
 FN:10,System.Void Assignment_Example_HU.Configurations.Swagger.ErrorResponseFilter::Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)
@@ -6080,292 +6080,292 @@ FNH:0
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\BackgroundServices\DiscountExpiryService.cs
 FN:17,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.DiscountExpiryService>)
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.DiscountExpiryService>)
-DA:18,0
-DA:20,0
-DA:21,0
-DA:22,0
-DA:23,0
-DA:24,0
-DA:25,0
-DA:26,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.DiscountExpiryService>)
+DA:18,1
+DA:20,1
+DA:21,1
+DA:22,1
+DA:23,1
+DA:24,1
+DA:25,1
+DA:26,1
 FN:28,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService/<ExecuteAsync>d__4::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService/<ExecuteAsync>d__4::MoveNext()
-DA:29,0
-DA:30,0
-DA:32,0
-DA:33,0
-DA:35,0
-DA:36,0
-DA:37,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService/<ExecuteAsync>d__4::MoveNext()
+DA:29,1
+DA:30,1
+DA:32,1
+DA:33,1
+DA:35,1
+DA:36,1
+DA:37,1
 DA:38,0
 DA:39,0
 DA:40,0
 DA:41,0
-DA:43,0
+DA:43,1
 DA:44,0
 DA:46,0
 DA:47,0
-BRDA:32,351,1,0
+BRDA:32,351,1,1
 BRDA:32,351,0,0
 FN:49,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService/<ExpireDiscountsAsync>d__5::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService/<ExpireDiscountsAsync>d__5::MoveNext()
-DA:50,0
-DA:51,0
-DA:52,0
-DA:53,0
-DA:56,0
-DA:57,0
-DA:60,0
-DA:61,0
-DA:62,0
-DA:64,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.DiscountExpiryService/<ExpireDiscountsAsync>d__5::MoveNext()
+DA:50,1
+DA:51,1
+DA:52,1
+DA:53,1
+DA:56,1
+DA:57,1
+DA:60,1
+DA:61,1
+DA:62,1
+DA:64,3
 DA:65,0
 DA:66,0
 DA:67,0
 DA:68,0
-DA:70,0
+DA:70,1
 DA:71,0
 DA:72,0
 DA:73,0
 DA:74,0
-DA:75,0
+DA:75,1
 DA:76,0
 DA:77,0
 DA:78,0
 DA:79,0
-DA:81,0
+DA:81,1
 BRDA:64,633,1,0
-BRDA:64,633,0,0
+BRDA:64,633,0,1
 BRDA:70,690,0,0
-BRDA:70,690,1,0
+BRDA:70,690,1,1
 LF:48
-LH:0
+LH:29
 BRF:6
-BRH:0
+BRH:3
 FNF:3
-FNH:0
+FNH:3
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\BackgroundServices\GameAutoCancelService.cs
 FN:14,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.GameAutoCancelService>)
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.GameAutoCancelService>)
-DA:15,0
-DA:17,0
-DA:18,0
-DA:19,0
-DA:20,0
-DA:21,0
-DA:22,0
-DA:23,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.GameAutoCancelService>)
+DA:15,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:21,1
+DA:22,1
+DA:23,1
 FN:25,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService/<ExecuteAsync>d__4::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService/<ExecuteAsync>d__4::MoveNext()
-DA:26,0
-DA:27,0
-DA:29,0
-DA:30,0
-DA:32,0
-DA:33,0
-DA:34,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService/<ExecuteAsync>d__4::MoveNext()
+DA:26,1
+DA:27,1
+DA:29,1
+DA:30,1
+DA:32,1
+DA:33,1
+DA:34,1
 DA:35,0
 DA:36,0
 DA:37,0
 DA:38,0
-DA:40,0
+DA:40,1
 DA:41,0
 DA:43,0
 DA:44,0
-BRDA:29,351,1,0
+BRDA:29,351,1,1
 BRDA:29,351,0,0
 FN:46,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService/<ProcessPendingGamesAsync>d__5::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService/<ProcessPendingGamesAsync>d__5::MoveNext()
-DA:47,0
-DA:48,0
-DA:49,0
-DA:52,0
-DA:53,0
-DA:54,0
-DA:55,0
-DA:56,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.GameAutoCancelService/<ProcessPendingGamesAsync>d__5::MoveNext()
+DA:47,1
+DA:48,1
+DA:49,1
+DA:52,1
+DA:53,1
+DA:54,1
+DA:55,1
+DA:56,1
 DA:57,0
 DA:58,0
 DA:59,0
 DA:60,0
-DA:62,0
+DA:62,1
 LF:36
-LH:0
+LH:25
 BRF:2
-BRH:0
+BRH:1
 FNF:3
-FNH:0
+FNH:3
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\BackgroundServices\RefundProcessingService.cs
 FN:14,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.RefundProcessingService>)
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.RefundProcessingService>)
-DA:15,0
-DA:17,0
-DA:18,0
-DA:19,0
-DA:20,0
-DA:21,0
-DA:22,0
-DA:23,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.RefundProcessingService>)
+DA:15,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:21,1
+DA:22,1
+DA:23,1
 FN:25,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService/<ExecuteAsync>d__4::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService/<ExecuteAsync>d__4::MoveNext()
-DA:26,0
-DA:27,0
-DA:29,0
-DA:30,0
-DA:32,0
-DA:33,0
-DA:34,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService/<ExecuteAsync>d__4::MoveNext()
+DA:26,1
+DA:27,1
+DA:29,1
+DA:30,1
+DA:32,1
+DA:33,1
+DA:34,1
 DA:35,0
 DA:36,0
 DA:37,0
 DA:38,0
-DA:40,0
+DA:40,1
 DA:41,0
 DA:43,0
 DA:44,0
-BRDA:29,351,1,0
+BRDA:29,351,1,1
 BRDA:29,351,0,0
 FN:46,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService/<ProcessPendingRefundsAsync>d__5::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService/<ProcessPendingRefundsAsync>d__5::MoveNext()
-DA:47,0
-DA:48,0
-DA:49,0
-DA:52,0
-DA:53,0
-DA:54,0
-DA:55,0
-DA:56,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.RefundProcessingService/<ProcessPendingRefundsAsync>d__5::MoveNext()
+DA:47,1
+DA:48,1
+DA:49,1
+DA:52,1
+DA:53,1
+DA:54,1
+DA:55,1
+DA:56,1
 DA:57,0
 DA:58,0
 DA:59,0
 DA:60,0
-DA:62,0
+DA:62,1
 LF:36
-LH:0
+LH:25
 BRF:2
-BRH:0
+BRH:1
 FNF:3
-FNH:0
+FNH:3
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\BackgroundServices\SlotLockExpiryService.cs
 FN:14,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.SlotLockExpiryService>)
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.SlotLockExpiryService>)
-DA:15,0
-DA:17,0
-DA:18,0
-DA:19,0
-DA:20,0
-DA:21,0
-DA:22,0
-DA:23,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.SlotLockExpiryService>)
+DA:15,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:21,1
+DA:22,1
+DA:23,1
 FN:25,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService/<ExecuteAsync>d__4::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService/<ExecuteAsync>d__4::MoveNext()
-DA:26,0
-DA:27,0
-DA:29,0
-DA:30,0
-DA:32,0
-DA:33,0
-DA:34,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService/<ExecuteAsync>d__4::MoveNext()
+DA:26,1
+DA:27,1
+DA:29,1
+DA:30,1
+DA:32,1
+DA:33,1
+DA:34,1
 DA:35,0
 DA:36,0
 DA:37,0
 DA:38,0
-DA:40,0
+DA:40,1
 DA:41,0
 DA:43,0
 DA:44,0
-BRDA:29,351,1,0
+BRDA:29,351,1,1
 BRDA:29,351,0,0
 FN:46,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService/<ExpireLocksAsync>d__5::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService/<ExpireLocksAsync>d__5::MoveNext()
-DA:47,0
-DA:48,0
-DA:49,0
-DA:52,0
-DA:53,0
-DA:54,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.SlotLockExpiryService/<ExpireLocksAsync>d__5::MoveNext()
+DA:47,1
+DA:48,1
+DA:49,1
+DA:52,1
+DA:53,1
+DA:54,1
 DA:55,0
 DA:56,0
 DA:57,0
 DA:58,0
-DA:60,0
+DA:60,1
 LF:34
-LH:0
+LH:23
 BRF:2
-BRH:0
+BRH:1
 FNF:3
-FNH:0
+FNH:3
 end_of_record
 SF:C:\Users\Hp\source\repos\sportManagement\BackgroundServices\WaitlistCleanupService.cs
 FN:18,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.WaitlistCleanupService>)
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.WaitlistCleanupService>)
-DA:19,0
-DA:21,0
-DA:22,0
-DA:23,0
-DA:24,0
-DA:25,0
-DA:26,0
-DA:27,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService::.ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger`1<Assignment_Example_HU.BackgroundServices.WaitlistCleanupService>)
+DA:19,1
+DA:21,1
+DA:22,1
+DA:23,1
+DA:24,1
+DA:25,1
+DA:26,1
+DA:27,1
 FN:50,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService/<CleanupWaitlistsForStartedGamesAsync>d__5::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService/<CleanupWaitlistsForStartedGamesAsync>d__5::MoveNext()
-DA:51,0
-DA:52,0
-DA:53,0
-DA:54,0
-DA:57,0
-DA:58,0
-DA:61,0
-DA:62,0
-DA:63,0
-DA:64,0
-DA:65,0
-DA:67,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService/<CleanupWaitlistsForStartedGamesAsync>d__5::MoveNext()
+DA:51,1
+DA:52,1
+DA:53,1
+DA:54,1
+DA:57,1
+DA:58,1
+DA:61,1
+DA:62,1
+DA:63,1
+DA:64,1
+DA:65,1
+DA:67,3
 DA:68,0
 DA:69,0
 DA:70,0
 DA:71,0
-DA:73,0
+DA:73,1
 DA:74,0
 DA:75,0
 DA:76,0
-DA:77,0
+DA:77,1
 DA:78,0
 DA:79,0
 DA:80,0
 DA:81,0
-DA:83,0
+DA:83,1
 BRDA:67,924,1,0
-BRDA:67,924,0,0
+BRDA:67,924,0,1
 BRDA:73,981,0,0
-BRDA:73,981,1,0
+BRDA:73,981,1,1
 FN:29,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService/<ExecuteAsync>d__4::MoveNext()
-FNDA:0,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService/<ExecuteAsync>d__4::MoveNext()
-DA:30,0
-DA:31,0
-DA:33,0
-DA:34,0
-DA:36,0
-DA:37,0
-DA:38,0
+FNDA:1,System.Void Assignment_Example_HU.BackgroundServices.WaitlistCleanupService/<ExecuteAsync>d__4::MoveNext()
+DA:30,1
+DA:31,1
+DA:33,1
+DA:34,1
+DA:36,1
+DA:37,1
+DA:38,1
 DA:39,0
 DA:40,0
 DA:41,0
 DA:42,0
-DA:44,0
+DA:44,1
 DA:45,0
 DA:47,0
 DA:48,0
-BRDA:33,351,1,0
+BRDA:33,351,1,1
 BRDA:33,351,0,0
 LF:49
-LH:0
+LH:31
 BRF:6
-BRH:0
+BRH:3
 FNF:3
-FNH:0
+FNH:3
 end_of_record
